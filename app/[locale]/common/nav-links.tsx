@@ -31,54 +31,33 @@ const linksConfig: NavLink[] = [
   {
     locale: NavLinksLocale.Sale,
     path: "/sales",
-    children: [
-      {
-        locale: NavLinksLocale.Sale,
-        path: "/sales",
-      },
-      {
-        locale: NavLinksLocale.CUC,
-        path: "/sales/cuc",
-      },
-      {
-        locale: NavLinksLocale.Finance,
-        path: "/sales/finance",
-      },
-      {
-        locale: NavLinksLocale.Insurance,
-        path: "/sales/insurance",
-      },
-      {
-        locale: NavLinksLocale.Warranty,
-        path: "/sales/extend_warranty",
-      },
-    ],
+    
   },
   {
     locale: NavLinksLocale.Aftersale,
     path: "/aftersale",
   },
-
   {
-    locale: NavLinksLocale.Infrastructure,
-    path: "/infrastructure",
-  },
+        locale: NavLinksLocale.CUC,
+        path: "/sales/cuc",
+      },
   {
     locale: NavLinksLocale.Aboutus,
     path: "/aboutus",
   },
 
-  {
-    locale: NavLinksLocale.Careers,
-    path: "/career",
-  },
-  {
-    locale: NavLinksLocale.Contact,
-    path: "/contact",
-  },
+  // {
+  //   locale: NavLinksLocale.Careers,
+  //   path: "/career",
+  // },
+ 
   {
     locale: NavLinksLocale.Customerecare,
     path: "/customercare",
+  },
+   {
+    locale: NavLinksLocale.Contact,
+    path: "/contact",
   },
 ];
 

@@ -23,7 +23,7 @@ function Carosilfronx() {
 
   return (
     
-     <section className="mt-9">
+     <section className="mt-8">
           <Carousel
             autoPlay={true}
             interval={autoSlideInterval}

@@ -24,3 +24,22 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+#mainNav a,
+#mainNav li,
+#mainNav span {
+  color: white !important;
+}
+#mainNav {
+  top: 0;
+  z-index: 10;
+}
+
+.topbar {
+  height: 32px;
+  
+}
+#mainNav {
+  position: absolute;
+  top: 32px; /* topbar height */
+  z-index: 10;
+}

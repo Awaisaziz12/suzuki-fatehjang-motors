@@ -59,8 +59,9 @@ const Header = ({ children }: HeaderProps) => {
             {children}
           </div>
         </div>
-        <CarBookingForm/>
-
+<div className="d-none d-lg-block">
+  <CarBookingForm />
+</div>
 
       </div>
 

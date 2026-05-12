@@ -37,7 +37,7 @@ export default function RootLayout({
           <TrackingManager />
 
           {/* 🔥 TOP BAR (FIRST) */}
-          {/* <TopBar /> */}
+          <TopBar />
 
           {/* 🔥 HEADER (SECOND) */}
           <Header>

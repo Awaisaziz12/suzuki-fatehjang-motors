@@ -36,7 +36,7 @@
 //       // Business info
 //       hours: "Our business hours are 9:00 AM to 5:45 PM, Monday to Saturday. We are closed on Sundays.",
 //       timing: "Visit us between 9:00 AM to 5:45 PM weekdays and Saturdays. Closed Sundays.",
-//       contact: "You can reach us via email at info@suzukiracecoursemotors.com.pk or by phone at +92 304 1111990.",
+//       contact: "You can reach us via email at info@suzukifatehjang.com or by phone at +92 304 1111990.",
 //       location: "Find us at 299/A Peshawar Rd, Awan Town New, Rawalpindi. Visit our website for directions.",
 //       address: "Our showroom is located at 299/A Peshawar Road, Awan Town New, Rawalpindi.",
     
@@ -60,7 +60,7 @@
 //       maintenance: "Regular maintenance packages available - check our service plans section online.",
     
 //       // Digital Services
-//       website: "Visit our full website at https://suzukiracecoursemotors.com.pk/ for services, bookings, and information.",
+//       website: "Visit our full website at https://suzukifatehjang.com.pk/ for services, bookings, and information.",
 //       appointment: "Book services online using our 'Reserve Appointment' feature on the website.",
 //       track_service: "Check your vehicle's service status through the 'Service Tracking' portal on our site.",
     
@@ -80,7 +80,7 @@
 //       membership: "Join our loyalty program for exclusive benefits - register through our website.",
     
 //       // Fallback
-//       default: "For more details, please visit our website: https://suzukiracecoursemotors.com.pk/ or call +92 304 1111990."
+//       default: "For more details, please visit our website: https://suzukifatehjang.com.pk/ or call +92 304 1111990."
 //     };
 
 //     const responseKey = Object.keys(responses).find(key =>
@@ -188,7 +188,7 @@
 //     <div className="bg-blue text-white flex dflex p-1">
 //       <Image src={favicon} alt="" width={60} height={60} className="p-1" />
 //       <h6 className="p-1 d-flex text-Black">
-//         Welcome To Suzuki Racecourse Motors
+//         Welcome To Suzuki Fatehjang Motors
 //       </h6>
 //       <div
 //         onClick={onClose} className="p-2 cursor text-bold "
@@ -262,7 +262,7 @@
 // const WelcomeMessage = () => (
 //   <div className="text-center text-gray-600 p-4">
 //     <h6 className="font-medium mb-2">👋 Live Chat 24/7</h6>
-//     <p className="text-sm">Welcome to Suzuki Racecourse Motors! How can I assist you today?</p>
+//     <p className="text-sm">Welcome to Suzuki Fatehjang Motors! How can I assist you today?</p>
 //   </div>
 // );
 

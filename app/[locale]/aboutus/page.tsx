@@ -3,13 +3,14 @@ import Moazzmpic from "../public/profiles/moazam.jpeg";
 import mohtashim from "../public/profiles/motashim.jpeg";
 import Team from "./team";
 import { getTranslations } from "next-intl/server";
+import ComingSoon from "../common/commingsoon";
 
 export default async function AboutUspage() {
   const t = await getTranslations({ namespace: "page.about" });
 
   return (
     <>
-      <section className="py-15 py-xl-20 bg-light">
+      {/* <section className="py-15 py-xl-20 bg-light">
         <div className="container">
           <div className="row align-items-center justify-content-center justify-content-lg-between">
             <div
@@ -75,7 +76,8 @@ export default async function AboutUspage() {
 
       <Team />
       <br />
-      <br />
+      <br /> */}
+      <ComingSoon />
     </>
   );
 }

@@ -14,8 +14,8 @@ export default async function HomePage() {
       {/* <Sale /> */}
       {/* <AimsandMissions /> */}
       {/* <Missions /> */}
-      <Cards />
-      <Whychose />
+      {/* <Cards /> */}
+        <Whychose />
       {/* <AimsandMissions /> */}
       {/* <Missions /> */}
        {/* //Chatbot */}

@@ -98,11 +98,12 @@ export default function Alto() {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-10 col-xl-8">
-              <h5 className="py-2">Alto Model Specifications</h5>
+              <h5 className="py-2 text-center">
+                Alto Model Specifications</h5>
 
               {/* Adding Prices Row */}
-              <table className="table table-bordered text-center">
-                <thead>
+    <table className="table table-bordered table-striped text-center align-middle">
+      <thead className="table-dark">
                   <tr>
                     <th>Variant</th>
                     {/* <th>VX</th> */}

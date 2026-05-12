@@ -11,7 +11,7 @@ const TopBar = () => {
         {/* LEFT SIDE */}
         <div className="d-flex gap-3 align-items-center">
           <span>📞 {Constants.PHONE}</span>
-          <span>✉️ info@example.com</span>
+          <span>✉️ info@suzukifatehjang.com</span>
         </div>
 
         {/* RIGHT SIDE */}

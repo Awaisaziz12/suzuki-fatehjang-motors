@@ -112,7 +112,7 @@ const CarsPage = () => {
 
                   <h4>{car.title}</h4>
 
-                  <p className="price">{car.price}</p>
+                  <p className="price bold-text">{car.price}</p>
 
                   {/* FILTER / NON-FILTER */}
                   <div className="price-tags">
@@ -123,19 +123,17 @@ const CarsPage = () => {
                       Non-Filer: {car.nonFiler}
                     </span>
                   </div>
-
+                  <div className="divider">
+                    <hr />
+                  </div>
                   {/* BUTTONS */}
                   <div className="actions">
                     <Link href={car.link} className="view-btn">
                       View Details
                     </Link>
+ 
 
-                    <button
-                      className="book-btn"
-                        onClick={() => alert("Open Booking Form")}
-                    >
-                      Book Now
-                    </button>
+                   <CarBookingForm/>
                   </div>
 
                 </div>

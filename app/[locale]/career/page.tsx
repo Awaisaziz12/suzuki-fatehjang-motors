@@ -18,7 +18,7 @@ const config = {
     "Work with cross-functional teams to deliver projects on time.",
   ],
   jobDetails: {
-    location: "Suzuki Racecourse Motors",
+    location: "Suzuki Fatehjang Motors",
     experience: "2+ years in graphic design",
     expiration: "December 31, 2024",
   },

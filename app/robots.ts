@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
     },
     // TODO: Replace with domain constant
-    sitemap: "https://www.Suzukiracecoursemotor.com.pk",
+    sitemap: "https://www.suzukifatehjang.com",
   };
 }

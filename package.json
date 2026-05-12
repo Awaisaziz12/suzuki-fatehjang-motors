@@ -1,6 +1,6 @@
 {
-  "name": "racecoursemotor",
-  "version": "0.1.14",
+  "name": "Suzuki_Fatehjang_Motors",
+  "version": "0.1.15",
   "private": true,
   "scripts": {
     "dev": "next dev",

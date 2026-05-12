@@ -159,7 +159,7 @@ export default function Fronx() {
     <>
       
 
-      <Carosilfronx />
+      {/* <Carosilfronx /> */}
       <SpecificationsFronx />
 
 

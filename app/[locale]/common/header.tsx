@@ -39,7 +39,7 @@ const Header = ({ children }: HeaderProps) => {
 
   return (
     <nav id="mainNav" className="navbar navbar-expand-lg navbar-sticky bg-black text-white z-2">
-      <div className="container d-flex align-items-center justify-content-between">
+      <div className="container d-flex align-items-center justify-content-between ">
 
         {/* LOGO */}
         <Link href="/" className="navbar-brand">
@@ -59,8 +59,8 @@ const Header = ({ children }: HeaderProps) => {
             {children}
           </div>
         </div>
-
         <CarBookingForm/>
+
 
       </div>
 

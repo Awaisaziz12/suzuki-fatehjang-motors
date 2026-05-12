@@ -214,7 +214,7 @@ const FronxTable = () => {
 const SpecificationsFronx = () => {
   return (
     <article>
-      <section className="py-1 py-xl-5 bg-light position-relative">
+      <section className="py-4 py-xl-8 bg-light position-relative">
 
         <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-center">
 

@@ -72,19 +72,33 @@ const CarsPage = () => {
   return (
     <section className="cars-section">
 
-      {/* HERO */}
-      <div className="hero">
-        <div className="container d-flex justify-content-between align-items-center flex-wrap">
-          <div>
-            <h1 className="hero-title">Find Your Perfect Ride</h1>
-            <p className="hero-sub">
-              Premium Suzuki cars with best deals & easy booking
-            </p>
-          </div>
+     {/* HERO */}
+<div className="hero py-4">
+  <div className="container">
+    
+    <div className="row align-items-center">
+      
+      {/* Text Section */}
+      <div className="col-12 col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
+        <h1 className="hero-title">
+          Find Your Perfect Ride
+        </h1>
+        <p className="hero-sub">
+          Premium Suzuki cars with best deals & easy booking
+        </p>
+      </div>
 
+      {/* Form Section */}
+      <div className="col-12 col-lg-6 d-flex justify-content-center justify-content-lg-end">
+        <div className="w-100" style={{ maxWidth: "420px" }}>
           <CarBookingForm />
         </div>
       </div>
+
+    </div>
+
+  </div>
+</div>
 
       {/* GRID */}
       <div className="container py-5">

@@ -70,7 +70,7 @@ const CarsPage = () => {
   }, []);
 
   return (
-    <section className="cars-section">
+    <section className="cars-section   text-dark">
 
   {/* HERO */}
 <div className="hero py-5">
@@ -91,7 +91,7 @@ const CarsPage = () => {
 
 
           <div className="form-content flex align-items-center justify-content-center">
-            <CarBookingForm />
+          <CarBookingForm/>
         </div>
 
       </div>

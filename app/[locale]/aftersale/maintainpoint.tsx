@@ -1,61 +1,134 @@
+"use client";
+
+import Constants from "@/data/Constants";
+import React from "react";
 const aftersaleConfig = {
   services: [
     "First Free Inspection (1,000 Km)",
     "Second Free Inspection (5,000 Km)",
-    "Schedule Maintenance (every 5,000 Km)",
-    "A/C Service, Repair, Replacement & Installation",
-    "Engine Tuning Petrol & CNG",
+    "Scheduled Maintenance (every 5,000 Km)",
+    "A/C Service, Repair & Installation",
+    "Engine Tuning (Petrol & CNG)",
     "Wheel Balancing & Alignment",
     "Brake Overhauling",
     "Suspension Repair & Overhauling",
-    "Washing & Interior Cleaning",
-    "Transmission Repair & Replacement",
-    "Battery Check & Replacement",
-    "Fuel System Cleaning",
-    "Exhaust System Repair & Replacement",
-    "Tire Rotation & Replacement",
     "Oil Change & Filter Replacement",
-    "Radiator & Cooling System Service",
-    "Headlight & Taillight Replacement",
-    "Windshield & Window Repair",
     "Electrical Diagnostics & Repair",
-    "Steering & Suspension Inspection",
+    "Battery Check & Replacement",
+    "Radiator & Cooling System Service",
   ],
-  maintenanceTitle: "We maintain all types of vehicles.",
+  maintenanceTitle: "Complete Vehicle Maintenance & Care",
 };
 
-async function Maintaince() {
+export default function Maintaince() {
   return (
-    <>
-      <section className="py-5">
-        <div className="container">
-          <div className="row mb-10">
-            <div className="col-lg-6">
-              <h2 className="fw-light">
-                <span className="fw-bold">
-                  {aftersaleConfig.maintenanceTitle}
-                </span>
-              </h2>
-            </div>
-          </div>
-          <div className="row g-3 g-xl-5">
-            {aftersaleConfig.services.map((service, index) => (
-              <div className="col-lg-4" key={index}>
-                <div className="d-flex">
-                  <div className="icon-box icon-box-sm bg-opaque-green rounded-circle me-2">
-                    <i className="bi bi-check2 text-green"></i>
-                  </div>
-                  <div>
-                    <p className="fs-lg">{service}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+    <section className="maintenance-section">
+      <div className="container">
+
+        {/* Heading */}
+        <div className="heading">
+          <h2>{aftersaleConfig.maintenanceTitle}</h2>
+          <p>
+            Professional inspection, repair and maintenance services for all Suzuki vehicles.
+          </p>
+           <a
+              href={`tel:${Constants.CRO}`}
+              className="cta-btn"
+            >
+              Reserved Appointments
+              <i className="bi bi-telephone-fill"></i>
+            </a>
         </div>
-      </section>
-    </>
+
+        {/* Grid */}
+        <div className="row g-3">
+          {aftersaleConfig.services.map((service, index) => (
+            <div className="col-lg-4 col-md-6" key={index}>
+              <div className="service-item">
+
+                <div className="check-icon">
+                  <i className="bi bi-check-lg"></i>
+                </div>
+
+                <span>{service}</span>
+
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+
+      <style jsx>{`
+        .maintenance-section {
+          background: #ffffff;
+          padding: 80px 0;
+        }
+
+        .heading {
+          text-align: center;
+          margin-bottom: 50px;
+        }
+
+        .heading h2 {
+          font-size: 36px;
+          font-weight: 700;
+          color: #111;
+        }
+
+        .heading p {
+          color: #6c757d;
+          margin-top: 10px;
+        }
+
+        .service-item {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 14px 16px;
+          border: 1px solid #e9ecef;
+          border-radius: 12px;
+          background: #f8f9fa;
+          transition: all 0.25s ease;
+        }
+
+        .service-item:hover {
+          background: #ffffff;
+          border-color: #0d6efd;
+          transform: translateY(-3px);
+          box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+        }
+
+        .check-icon {
+          width: 32px;
+          height: 32px;
+          min-width: 32px;
+          border-radius: 50%;
+          background: rgba(13, 110, 253, 0.1);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .check-icon i {
+          color: #0d6efd;
+          font-size: 16px;
+        }
+
+        .service-item span {
+          font-size: 14px;
+          color: #212529;
+          font-weight: 500;
+          line-height: 1.4;
+        }
+
+        /* Responsive spacing */
+        @media (max-width: 768px) {
+          .heading h2 {
+            font-size: 28px;
+          }
+        }
+      `}</style>
+    </section>
   );
 }
-
-export default Maintaince;

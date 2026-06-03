@@ -1,101 +1,237 @@
+"use client"
 import Image from "next/image";
 import React from "react";
-import homepic from "../../public/workshopa.png";
+import homepic from "./1 (1).jpg";
 import Constants from "@/data/Constants";
 
 const config = {
-  title: "Suzuki Mechanical Workshop: Where Expertise Meets Excellence",
-  note: "NOTE: √: Applicable X: Not Applicable",
-  Endnote:
-    "By choosing Suzuki, you're ensuring that your vehicle receives the best care possible, keeping it in peak condition for years to come.",
+  title: "Suzuki Mechanical Workshop",
+  subtitle: "Where Expertise Meets Excellence",
   desc1:
-    "At Suzuki, our mechanical workshops are designed to provide top-tier service and expertise for all Suzuki vehicles. Whether it's routine maintenance, engine diagnostics, or complex repairs, our skilled technicians ensure that your vehicle is treated with the utmost care. We believe in delivering excellence through advanced tools, genuine Suzuki parts, and a team of certified professionals. With a strong focus on precision and attention to detail, we ensure that every service is completed to the highest industry standards.",
-  title3: "Comprehensive Services",
-  des3: "We offer a wide range of services at our mechanical workshop, including:",
+    "At Suzuki, our mechanical workshops deliver top-tier service using genuine parts, advanced tools, and certified technicians to ensure maximum vehicle performance and safety.",
   services: [
     "First Free Inspection (1,000 Km)",
     "Second Free Inspection (5,000 Km)",
-    "Schedule Maintenance (every 5,000 Km)",
-    "A/C Service, Repair, Replacement & Installation",
-    "Engine Tuning Petrol & CNG",
+    "Scheduled Maintenance (every 5,000 Km)",
+    "A/C Service & Repair",
+    "Engine Tuning (Petrol & CNG)",
     "Wheel Balancing & Alignment",
-    "Brake Overhauling",
-    "Suspension Repair & Overhauling",
-    "Washing & Interior Cleaning",
-    "Transmission Repair & Replacement",
-    "Battery Check & Replacement",
-    "Fuel System Cleaning",
-    "Exhaust System Repair & Replacement",
-    "Tire Rotation & Replacement",
-    "Oil Change & Filter Replacement",
-    "Radiator & Cooling System Service",
-    "Headlight & Taillight Replacement",
-    "Windshield & Window Repair",
-    "Electrical Diagnostics & Repair",
-    "Steering & Suspension Inspection",
+    "Brake & Suspension Service",
+    "Electrical Diagnostics",
+    "Oil & Filter Change",
   ],
-  teamTitle: "Why Trust Suzuki's Expert Technicians?",
+  teamTitle: "Certified Expert Technicians",
   teamDesc:
-    "At Suzuki Mechanical Workshop, our team of certified technicians brings years of experience and advanced technical knowledge to every vehicle they service. All of our mechanics undergo continuous training to stay updated with the latest advancements in Suzuki vehicle technology. Equipped with cutting-edge diagnostic tools, they ensure that every repair, no matter how complex, is done right the first time. Whether it's a routine service or a major repair, you can count on Suzuki's professionals to provide unparalleled service quality.",
-  warrantyTitle: "Extended Warranty & Genuine Parts Guarantee",
+    "Our trained professionals use advanced diagnostic systems and follow Suzuki global standards to ensure every repair is accurate, safe, and reliable.",
+  warrantyTitle: "Genuine Parts & Warranty Support",
   warrantyDesc:
-    "We believe in offering peace of mind to our customers. That's why we provide an extended warranty on all services performed at our workshop, using only genuine Suzuki parts. Every part is designed and tested to meet the highest quality standards, ensuring long-lasting performance and reliability for your vehicle. By opting for Suzuki’s certified parts and services, you protect your investment and ensure your vehicle’s optimal performance for the years ahead.",
+    "We only use original Suzuki parts backed by warranty to ensure durability, performance, and long-term reliability.",
+  endNote:
+    "Choosing Suzuki means choosing long-term reliability, safety, and peace of mind.",
 };
 
 export default function MechanicalWorkshop() {
   return (
-    <article>
-      <section className="py-9">
+    <article className="workshop-page">
+
+      {/* HERO IMAGE */}
+      <div className="hero py-5">
         <Image
           src={homepic}
-          layout="responsive"
           alt="Suzuki Mechanical Workshop"
+          className="hero-img"
+          priority
         />
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-10 col-xl-8">
-              <h1 className="display-3 py-4">{config.title}</h1>
+      </div>
 
-              <div className="dflexrow">
-                <h5>{config.title3}</h5>
-                <div className="col-md-auto py-3">
-                  <a
-                    href={`tel:${Constants.CRO}`}
-                    className="btn btn-yellow btn-with-icon rounded-pill btn-lg"
-                    data-aos="zoom-out"
-                    data-aos-delay="300"
-                  >
-                    Book Appointments <i className="bi bi-telephone-fill"></i>
-                  </a>
+      <div className="container content">
+
+        {/* TITLE */}
+        <div className="title-block">
+          <h1>{config.title}</h1>
+          <h3>{config.subtitle}</h3>
+          <p>{config.desc1}</p>
+        </div>
+
+        {/* SERVICES */}
+        <div className="section">
+          <div className="section-header">
+            <h2>Core Services</h2>
+ <a
+              href={`tel:${Constants.CRO}`}
+              className="cta-btn"
+            >
+              Book Appointments
+              <i className="bi bi-telephone-fill"></i>
+            </a>
+          </div>
+
+          <div className="row g-3">
+            {config.services.map((service, index) => (
+              <div className="col-md-6 col-lg-4" key={index}>
+                <div className="service-card">
+                  <i className="bi bi-check-circle-fill"></i>
+                  <span>{service}</span>
                 </div>
               </div>
-              <p className="fs-lg text-secondary">{config.des3}</p>
-              <div className="row g-3 g-xl-5">
-                {config.services.map((service, index) => (
-                  <div className="col-lg-4" key={index}>
-                    <div className="d-flex">
-                      <div className="icon-box icon-box-sm bg-opaque-green rounded-circle me-2">
-                        <i className="bi bi-check2 text-green"></i>
-                      </div>
-                      <div>
-                        <p className="fs-lg">{service}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <br />
-              <br />
-              <h5>{config.teamTitle}</h5>
-              <p className="fs-lg text-secondary">{config.teamDesc}</p>
-              <h5>{config.warrantyTitle}</h5>
-              <p className="fs-lg text-secondary">{config.warrantyDesc}</p>
-              <br />
-              <p>{config.Endnote}</p>
-            </div>
+            ))}
           </div>
         </div>
-      </section>
+
+        {/* TEAM */}
+        <div className="info-card">
+          <h2>{config.teamTitle}</h2>
+          <p>{config.teamDesc}</p>
+        </div>
+
+        {/* WARRANTY */}
+        <div className="info-card">
+          <h2>{config.warrantyTitle}</h2>
+          <p>{config.warrantyDesc}</p>
+        </div>
+
+        {/* END NOTE */}
+        <div className="end-note">
+          {config.endNote}
+        </div>
+
+      </div>
+
+      <style jsx>{`
+        .workshop-page {
+          background: #f7f9fc;
+        }
+
+        .hero-img {
+          width: 100%;
+          height: auto;
+        }
+
+        .content {
+          padding: 70px 0;
+        }
+
+        .title-block {
+          text-align: center;
+          margin-bottom: 50px;
+        }
+
+        .title-block h1 {
+          font-size: 42px;
+          font-weight: 800;
+          color: #111;
+        }
+
+        .title-block h3 {
+          font-size: 20px;
+          color: #0d6efd;
+          margin-bottom: 15px;
+        }
+
+        .title-block p {
+          color: #6c757d;
+          max-width: 800px;
+          margin: auto;
+          line-height: 1.8;
+        }
+
+        .section {
+          margin-bottom: 60px;
+        }
+
+        .section-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 25px;
+        }
+
+        .section-header h2 {
+          font-size: 26px;
+          font-weight: 700;
+          color: #111;
+        }
+
+        .btn-call {
+          background: #0d6efd;
+          color: #fff;
+          padding: 10px 18px;
+          border-radius: 30px;
+          text-decoration: none;
+          font-weight: 600;
+          transition: 0.3s;
+        }
+
+        .btn-call:hover {
+          background: #084ec5;
+          color: #fff;
+        }
+
+        .service-card {
+          background: #fff;
+          border: 1px solid #e9ecef;
+          border-radius: 12px;
+          padding: 14px 16px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          transition: 0.2s;
+        }
+
+        .service-card:hover {
+          border-color: #0d6efd;
+          transform: translateY(-3px);
+        }
+
+        .service-card i {
+          color: #0d6efd;
+          font-size: 18px;
+        }
+
+        .service-card span {
+          font-size: 14px;
+          color: #212529;
+        }
+
+        .info-card {
+          background: #fff;
+          padding: 30px;
+          border-radius: 14px;
+          border: 1px solid #e9ecef;
+          margin-bottom: 25px;
+        }
+
+        .info-card h2 {
+          font-size: 22px;
+          font-weight: 700;
+          margin-bottom: 10px;
+        }
+
+        .info-card p {
+          color: #6c757d;
+          line-height: 1.8;
+        }
+
+        .end-note {
+          text-align: center;
+          font-weight: 500;
+          color: #495057;
+          margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+          .title-block h1 {
+            font-size: 30px;
+          }
+
+          .section-header {
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
+          }
+        }
+      `}</style>
+
     </article>
   );
 }

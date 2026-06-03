@@ -1,84 +1,91 @@
 import Image from "next/image";
 import { Link } from "@/navigation";
 import Constants from "@/data/Constants";
-import mapimg from "../public/map.png";
-import ComingSoon from "../common/commingsoon";
+import mapimg from "./WhatsApp Image 2026-06-03 at 2.52.16 PM.jpeg";
 
 const config = {
   suzukifatehjangTitle: "Suzuki Fatehjang Motors",
   addressDescription: "Let's make something big.",
-  emailLabel: "Email",
   email: "info@suzukifatehjang.com",
-  phoneLabel: "Phone",
-  workTimeLabel: "Work Time",
-  workTime: "Monday to Saturday 9:00am to 5:45pm",
-  googleMap: Constants.GOOGLE_MAP,
   phone: Constants.PHONE,
-  formTitle: "Let's make something big.",
-  formSubtitle: "Together.",
-  form: {
-    yourNameLabel: "Your Name",
-    yourNamePlaceholder: "Your Name",
-    yourCompanyLabel: "Your Company",
-    yourCompanyPlaceholder: "Your Company",
-    messageLabel: "Message",
-    messagePlaceholder: "Message",
-    termsText: "I accept the",
-    termsLink: "Terms & Conditions",
-    privacyPolicyText:
-      "and acknowledge that my information will be used in accordance with Privacy Policy.",
-    submitButtonText: "Get in touch",
-  },
+  googleMap: Constants.GOOGLE_MAP,
+  workTime: "Monday to Saturday 9:00am to 5:45pm",
 };
 
 async function Contact() {
   return (
-    <ComingSoon/>
-    // <section className="py-15 py-xl-20 bg-white">
-    //   <div className="container mt-5 mt-lg-10">
-    //     <div className="row align-items-center justify-content-between">
-    //       <div className="col-lg-6 mb-4 mb-lg-0">
-    //         <h1 className="text-dark">{config.suzukifatehjangTitle}</h1>
-    //         <p className="text-dark">{config.addressDescription}</p>
-    //         <hr className="my-4 fw-25 ml-0" />
-    //         <ul className="list-group list-group-minimal">
-    //           <li className="list-group-item d-flex align-items-top">
-    //             <span className="w-25 text-dark">{config.emailLabel}</span>
-    //             <Link
-    //               href={config.googleMap}
-    //               className="text-dark underline"
-    //               target="_blank"
-    //             >
-    //               {config.email}
-    //             </Link>
-    //           </li>
-    //           <li className="list-group-item d-flex align-items-top">
-    //             <span className="w-25 text-dark">{config.phoneLabel}</span>
-    //             <Link
-    //               href={"tel:" + config.phone}
-    //               className="text-dark underline"
-    //             >
-    //               {config.phone}
-    //             </Link>
-    //           </li>
-    //           <li className="list-group-item d-flex align-items-top text-dark">
-    //             <span className="w-25 text-dark">{config.workTimeLabel}</span>
-    //             {config.workTime}
-    //           </li>
-    //         </ul>
-    //       </div>
-    //       <div className="col-lg-5">
-    //         <div className="media equal-1-1">
-    //           <Link href={config.googleMap} target="_blank">
-    //             <Image fill src={mapimg} alt="map" className="card-img-top" />
-    //           </Link>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </section>
+    <section className="contact-hero py-5">
+      <div className="container mt-5">
+
+        <div className="row align-items-center g-5">
+
+          {/* LEFT SIDE */}
+          <div className="col-lg-6">
+
+            <div className="glass-card p-5 rounded-5">
+
+              <h2 className="fw-bold mb-2 title-gradient">
+                {config.suzukifatehjangTitle}
+              </h2>
+
+              <p className="text-light mb-4">
+                {config.addressDescription}
+              </p>
+
+              <div className="info-box">
+
+                <div className="info-row">
+                  <span>Email</span>
+                  <Link href={`mailto:${config.email}`} className="info-link">
+                    {config.email}
+                  </Link>
+                </div>
+
+                <div className="info-row">
+                  <span>Phone</span>
+                  <Link href={"tel:" + config.phone} className="info-link">
+                    {config.phone}
+                  </Link>
+                </div>
+
+                <div className="info-row">
+                  <span>Work Time</span>
+                  <span className="text-light fw-medium">
+                    {config.workTime}
+                  </span>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* RIGHT SIDE MAP */}
+          <div className="col-lg-6">
+
+            <div className="map-glass">
+
+              <Link href={config.googleMap} target="_blank">
+
+                <Image
+                  src={mapimg}
+                  alt="map"
+                  className="map-img"
+                  priority
+                />
+
+              </Link>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
   );
-  
 }
 
 export default Contact;

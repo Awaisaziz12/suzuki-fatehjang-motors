@@ -1,357 +1,276 @@
-// "use client";
-// import Image from "next/image";
-// import React, { useState } from "react";
-// import alto1 from "../../public/cuccar/1.jpeg";
-// import alto2 from "../../public/cuccar/2.jpeg";
-// import alto3 from "../../public/cuccar/3.jpeg";
-// import alto4 from "../../public/cuccar/4.jpeg";
-// import alto5 from "../../public/cuccar/5.jpeg";
-// import alto6 from "../../public/cuccar/6.jpeg";
-// import { Link } from "@/navigation";
-// import Constants from "@/data/Constants";
+"use client";
+import Image from "next/image";
+import React, { useState } from "react";
+import alto1 from "../../public/cuccar/1.jpeg";
+import alto2 from "../../public/cuccar/2.jpeg";
+import alto3 from "../../public/cuccar/3.jpeg";
+import alto4 from "../../public/cuccar/4.jpeg";
+import alto5 from "../../public/cuccar/5.jpeg";
+import alto6 from "../../public/cuccar/6.jpeg";
+import { Link } from "@/navigation";
+import Constants from "@/data/Constants";
 
-import ComingSoon from "../../common/commingsoon";
+const carData = [
+  {
+    model: "Alto VX",
+    price: 200000,
+    mileage: "34,000 km",
+    year: 2022,
+    brand: "Alto",
+    img: alto1,
+    isSold: false,
+  },
+  {
+    model: "Alto VX",
+    price: 200000,
+    mileage: "70,000 km",
+    year: 2017,
+    brand: "Alto",
+    img: alto2,
+    isSold: false,
+  },
+  {
+    model: "Mehran VXR",
+    price: 1280000,
+    mileage: "78,000 km",
+    year: 2014,
+    brand: "Mehran",
+    img: alto3,
+    isSold: false,
+  },
+  {
+    model: "Alto VXR",
+    price: 2575000,
+    mileage: "42,000 km",
+    year: 2022,
+    brand: "Alto",
+    img: alto5,
+    isSold: true,
+  },
+  {
+    model: "Alto AGS",
+    price: 2650000,
+    mileage: "36,000 km",
+    year: 2022,
+    brand: "Alto",
+    img: alto4,
+    isSold: false,
+  },
+  {
+    model: "Alto VXR",
+    price: 2570000,
+    mileage: "27,000 km",
+    year: 2022,
+    brand: "Alto",
+    img: alto6,
+    isSold: false,
+  },
+];
 
-// const carData = [
-//   // {
-//   //   model: "Cultus VXL",
-//   //   price: 360000,
-//   //   mileage: "60,000 km",
-//   //   year: 2018,
-//   //   brand: "Cultus",
-//   //   img: Cultuspng,
-//   //   isSold: false,
-//   // },
-//   // {
-//   //   model: "Swift MT",
-//   //   price: 400000,
-//   //   mileage: "70,000 km",
-//   //   year: 2017,
-//   //   brand: "Swift",
-//   //   img: Swiftpng,
-//   //   isSold: true,
-//   // },
+export default function CUC() {
+  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+  const [sortOption, setSortOption] = useState<string>("priceHighToLow");
+  const [minPrice, setMinPrice] = useState<number>(10000);
+  const [maxPrice, setMaxPrice] = useState<number>(5000000);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
-//   {
-//     model: "Alto VX",
-//     price: 200000,
-//     mileage: "34,000 km",
-//     year: 2022,
-//     brand: "Alto",
-//     img: alto1,
-//     isSold: false,
-//   },
+  const carsPerPage = 6;
 
-//   {
-//     model: "Alto VX",
-//     price: 200000,
-//     mileage: "70,000 km",
-//     year: 2017,
-//     brand: "Alto",
-//     img: alto2,
-//     isSold: false,
-//   },
+  const handleBrandChange = (brand: string) => {
+    setSelectedBrands((prev) =>
+      prev.includes(brand) ? prev.filter((b) => b !== brand) : [brand]
+    );
+  };
 
-//   {
-//     model: "Mehran VXR",
-//     price: 1280000,
-//     mileage: "78,000 km",
-//     year: 2014,
-//     brand: "Mehran",
-//     img: alto3,
-//     isSold: false,
-//   },
-//   {
-//     model: "Alto VXR",
-//     price: 2575000,
-//     mileage: "42,000 km",
-//     year: 2022,
-//     brand: "Alto",
-//     img: alto5,
-//     isSold: true,
-//   },
-//   {
-//     model: "Alto AGS",
-//     price: 2650000,
-//     mileage: "36,000 km",
-//     year: 2022,
-//     brand: "Alto",
-//     img: alto4,
-//     isSold: false,
-//   },
-//   {
-//     model: "Alto VXR",
-//     price: 2570000,
-//     mileage: "27,000 km",
-//     year: 2022,
-//     brand: "Alto",
-//     img: alto6,
-//     isSold: false,
-//   },
-// ];
+  const handleSortChange = (option: string) => setSortOption(option);
 
-// export default function CUC() {
-//   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
-//   const [sortOption, setSortOption] = useState<string>("priceHighToLow");
-//   const [minPrice, setMinPrice] = useState<number>(10000);
-//   const [maxPrice, setMaxPrice] = useState<number>(5000000);
-//   const [currentPage, setCurrentPage] = useState<number>(1);
+  const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    if (name === "minPrice") setMinPrice(Number(value));
+    else setMaxPrice(Number(value));
+  };
 
-//   const carsPerPage = 6;
-//   const handleBrandChange = (brand: string) => {
-//     setSelectedBrands((prev) =>
-//       prev.includes(brand) ? prev.filter((b) => b !== brand) : [brand]
-//     );
-//   };
+  const sortedCars = [...carData].sort((a, b) => {
+    if (sortOption === "priceLowToHigh") return a.price - b.price;
+    if (sortOption === "newestFirst") return b.year - a.year;
+    if (sortOption === "oldestFirst") return a.year - b.year;
+    return b.price - a.price;
+  });
 
-//   const handleSortChange = (option: string) => {
-//     setSortOption(option);
-//   };
+  const filteredCars = sortedCars.filter(
+    (car) =>
+      (selectedBrands.length === 0 || selectedBrands.includes(car.brand)) &&
+      car.price >= minPrice &&
+      car.price <= maxPrice
+  );
 
-//   const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//     const { name, value } = e.target;
-//     if (name === "minPrice") {
-//       setMinPrice(Number(value));
-//     } else {
-//       setMaxPrice(Number(value));
-//     }
-//   };
-//   const sortedCars = [...carData].sort((a, b) => {
-//     if (sortOption === "priceLowToHigh") {
-//       return a.price - b.price;
-//     } else if (sortOption === "newestFirst") {
-//       return b.year - a.year;
-//     } else if (sortOption === "oldestFirst") {
-//       return a.year - b.year;
-//     } else {
-//       return b.price - a.price;
-//     }
-//   });
-//   const filteredCars = sortedCars.filter(
-//     (car) =>
-//       (selectedBrands.length === 0 || selectedBrands.includes(car.brand)) &&
-//       car.price >= minPrice &&
-//       car.price <= maxPrice
-//   );
+  const indexOfLastCar = currentPage * carsPerPage;
+  const indexOfFirstCar = indexOfLastCar - carsPerPage;
+  const currentCars = filteredCars.slice(indexOfFirstCar, indexOfLastCar);
 
-//   const indexOfLastCar = currentPage * carsPerPage;
-//   const indexOfFirstCar = indexOfLastCar - carsPerPage;
-//   const currentCars = filteredCars.slice(indexOfFirstCar, indexOfLastCar);
+  const nextPage = () => setCurrentPage((p) => p + 1);
+  const prevPage = () => currentPage > 1 && setCurrentPage((p) => p - 1);
 
-//   const nextPage = () => {
-//     setCurrentPage((prev) => prev + 1);
-//   };
-
-//   const prevPage = () => {
-//     if (currentPage > 1) setCurrentPage((prev) => prev - 1);
-//   };
-
-//   return (
-//     <section className="py-8 py-xl-9">
-//       <div className="container mt-5">
-//         <div className="row g-3 g-md-5 align-items-end mb-5">
-//           <div className="col-md-6">
-//             <h1 className="mb-2">Available Used Cars</h1>
-//             <p className="text-muted">
-//               Choose from our wide range of used cars.
-//             </p>
-//           </div>
-//           <div className="col-md-6 text-md-end">
-//             <div className="dropdown d-inline-block me-3">
-//               <a
-//                 className="underline text-black"
-//                 href="#"
-//                 role="button"
-//                 id="dropdownMenuLink"
-//                 data-bs-toggle="dropdown"
-//                 aria-expanded="false"
-//               >
-//                 Sort by:{" "}
-//                 {sortOption === "priceHighToLow"
-//                   ? "Price high to low"
-//                   : sortOption === "priceLowToHigh"
-//                   ? "Price low to high"
-//                   : sortOption === "newestFirst"
-//                   ? "Newest first"
-//                   : "Oldest first"}
-//                 <i className="bi bi-chevron-down"></i>
-//               </a>
-//               <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-//                 <li>
-//                   <a
-//                     className="dropdown-item"
-//                     href="#"
-//                     onClick={() => handleSortChange("priceLowToHigh")}
-//                   >
-//                     Price low to high
-//                   </a>
-//                 </li>
-//                 <li>
-//                   <a
-//                     className="dropdown-item"
-//                     href="#"
-//                     onClick={() => handleSortChange("newestFirst")}
-//                   >
-//                     Newest first
-//                   </a>
-//                 </li>
-//                 <li>
-//                   <a
-//                     className="dropdown-item"
-//                     href="#"
-//                     onClick={() => handleSortChange("oldestFirst")}
-//                   >
-//                     Oldest first
-//                   </a>
-//                 </li>
-//               </ul>
-//             </div>
-//           </div>
-//         </div>
-
-//         <div className="row justify-content-between">
-//           <aside className="col-xl-3 d-xl-block mb-4">
-//             <div className="widget">
-//               <h5 className="text-muted mb-2">Car Brands</h5>
-//               <ul className="list-unstyled d-flex flex-wrap flex-xl-column">
-//                 {["Alto", "Mehran", "Cultus", "Wagon-R", "Swift", "Ravi"].map(
-//                   (brand, index) => (
-//                     <li key={index} className="mt-1 me-2">
-//                       <div className="form-check form-check-minimal">
-//                         <input
-//                           className="form-check-input"
-//                           type="checkbox"
-//                           id={`brand-${index}`}
-//                           checked={selectedBrands.includes(brand)}
-//                           onChange={() => handleBrandChange(brand)}
-//                         />
-//                         <label
-//                           className="form-check-label brand-label"
-//                           htmlFor={`brand-${index}`}
-//                         >
-//                           {brand}
-//                         </label>
-//                       </div>
-//                     </li>
-//                   )
-//                 )}
-//               </ul>
-//               <div className="price-range d-inline-block">
-//                 <h5 className="">Price Range</h5>
-//                 <input
-//                   type="number"
-//                   className="form-control d-inline-block me-2"
-//                   name="minPrice"
-//                   value={minPrice}
-//                   onChange={handlePriceChange}
-//                   placeholder="Min Price"
-//                   style={{ width: "100px", height: "40px" }}
-//                 />
-
-//                 <input
-//                   type="number"
-//                   className="form-control d-inline-block"
-//                   name="maxPrice"
-//                   value={maxPrice}
-//                   onChange={handlePriceChange}
-//                   placeholder="Max Price"
-//                   style={{ width: "100px", height: "40px" }}
-//                 />
-//               </div>
-//             </div>
-//           </aside>
-//           <div className="col-xl-9">
-//             <div className="row g-3">
-//               {currentCars.length > 0 ? (
-//                 currentCars.map((car, index) => (
-//                   <div key={index} className="col-md-6 col-xl-4">
-//                     <div className="border card flex-1">
-//                       <div className="card-header position-relative">
-//                         <Image
-//                           src={car.img}
-//                           alt={car.model}
-//                           layout="responsive"
-//                           width={500}
-//                           height={500}
-//                           className="card-img-top"
-//                         />
-//                         {car.isSold ? (
-//                           <span
-//                             className="position-absolute top-0 start-0 badge bg-danger"
-//                             style={{ fontSize: "1rem", padding: "0.5em" }}
-//                           >
-//                             Sold
-//                           </span>
-//                         ) : (
-//                           <span
-//                             className="position-absolute top-0 start-0 badge bg-success"
-//                             style={{ fontSize: "1rem", padding: "0.5em" }}
-//                           >
-//                             Available
-//                           </span>
-//                         )}
-//                       </div>
-//                       <div className="card-footer dflexcolom flexcoloum">
-//                         <h5 className="car-model-title ">{car.model}</h5>
-//                         <div className="text-muted ">
-//                           Model: {car.year} • {car.mileage}
-//                         </div>
-//                         <span className="product-price text-dark display-6 underline">
-//                           Rs: {car.price}
-//                         </span>
-//                         <p >
-//                           <Link
-//                             href={"tel:" + Constants.USEDCAR}
-//                             className="btn border btn-with-icon rounded-pill"
-//                           >
-//                             <i className="bi bi-telephone-fill"></i> Contact Now
-//                           </Link>
-//                         </p>
-//                       </div>
-//                     </div>
-//                   </div>
-//                 ))
-//               ) : (
-//                 <div className="col-12">
-//                   <p>No cars match the selected filters.</p>
-//                 </div>
-//               )}
-//             </div>
-
-//             <div className="mt-4 d-flex justify-content-between">
-//               <button
-//                 className="btn btn-outline-primary"
-//                 disabled={currentPage === 1}
-//                 onClick={prevPage}
-//               >
-//                 Previous
-//               </button>
-//               <button
-//                 className="btn btn-outline-primary"
-//                 disabled={indexOfLastCar >= filteredCars.length}
-//                 onClick={nextPage}
-//               >
-//                 Next
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-async function CUC() {
   return (
-    <>
-      {/* <Cards />
+    <section className="py-10 car-section-bg">
+      <div className="container mt-5">
 
-      <Whychose />
+        {/* 3D HEADER */}
+<div className="row mb-5">
+  <div className="col-12">
 
-      <Maintaince /> */}
-      <ComingSoon />
-    </>
+    <div className="header-3d p-4 rounded-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+
+      {/* LEFT TEXT */}
+      <div>
+        <h1 className="fw-bold mb-1 text-white">
+          Available Used Cars
+        </h1>
+        <p className="text-light opacity-75 mb-0">
+          Choose from our wide range of used cars.
+        </p>
+      </div>
+
+      {/* RIGHT DROPDOWN */}
+      <div className="dropdown sort-3d p-2 px-3 rounded-pill">
+        <a
+          href="#"
+          data-bs-toggle="dropdown"
+          className="text-white text-decoration-none"
+        >
+          Sort by
+        </a>
+
+        <ul className="dropdown-menu">
+          <li>
+            <a className="dropdown-item" onClick={() => handleSortChange("priceLowToHigh")}>
+              Price Low → High
+            </a>
+          </li>
+          <li>
+            <a className="dropdown-item" onClick={() => handleSortChange("newestFirst")}>
+              Newest First
+            </a>
+          </li>
+          <li>
+            <a className="dropdown-item" onClick={() => handleSortChange("oldestFirst")}>
+              Oldest First
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+        <div className="row">
+
+          {/* FILTER */}
+          <aside className="col-xl-3 mb-4">
+            <div className="filter-3d p-4 rounded-4">
+
+              <h5 className="mb-3">Car Brands</h5>
+
+              <ul className="list-unstyled">
+                {["Alto", "Mehran", "Cultus", "Wagon-R", "Swift", "Ravi"].map((brand, i) => (
+                  <li key={i}>
+                    <label className="d-flex gap-2 align-items-center mb-2">
+                      <input
+                        type="checkbox"
+                        checked={selectedBrands.includes(brand)}
+                        onChange={() => handleBrandChange(brand)}
+                      />
+                      {brand}
+                    </label>
+                  </li>
+                ))}
+              </ul>
+
+            
+            </div>
+          </aside>
+
+          {/* CAR GRID */}
+          <div className="col-xl-9">
+            <div className="row g-4">
+
+              {currentCars.map((car, i) => (
+                <div key={i} className="col-md-6 col-xl-4">
+
+                  <div className="car-card-3d p-3 rounded-4">
+
+                    <div className="car-img position-relative">
+                      <Image src={car.img} alt={car.model} layout="responsive" width={500} height={500} />
+
+                      <span className={`badge position-absolute top-0 start-0 ${car.isSold ? "bg-danger" : "bg-success"}`}>
+                        {car.isSold ? "Sold" : "Available"}
+                      </span>
+                    </div>
+
+                    <div className="mt-3">
+                      <h5>{car.model}</h5>
+                      <p className="text-light">{car.year} • {car.mileage}</p>
+                      <h4 className="text-warning">Rs {car.price.toLocaleString()}</h4>
+
+                      <Link href={"tel:" + Constants.USEDCAR} className="btn btn-dark rounded-pill w-100 mt-2">
+                        Contact Now
+                      </Link>
+                    </div>
+
+                  </div>
+
+                </div>
+              ))}
+
+            </div>
+
+            {/* PAGINATION */}
+            <div className="d-flex justify-content-between mt-4">
+              <button className="btn btn-outline-dark" onClick={prevPage}>Previous</button>
+              <button className="btn btn-outline-dark" onClick={nextPage}>Next</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      {/* INLINE 3D CSS */}
+      <style jsx>{`
+        .car-section-bg{
+          background: linear-gradient(135deg,#0f172a,#1e293b);
+        }
+
+        .header-3d{
+          background: linear-gradient(145deg,#111827,#1f2937);
+          box-shadow: 10px 10px 25px #0b1220, -10px -10px 25px #1f2a3a;
+        }
+
+        .sort-3d{
+          background: rgba(255,255,255,0.1);
+          backdrop-filter: blur(10px);
+          box-shadow: 5px 5px 15px #0b1220;
+        }
+
+        .filter-3d{
+          background: #111827;
+          color: white;
+          box-shadow: 10px 10px 30px #0b1220;
+        }
+
+        .car-card-3d{
+          background: #0f172a;
+          color: white;
+          box-shadow: 10px 10px 25px #0b1220;
+          transition: 0.3s;
+        }
+
+        .car-card-3d:hover{
+          transform: translateY(-10px) scale(1.02);
+          box-shadow: 15px 15px 35px #000;
+        }
+      `}</style>
+    </section>
   );
 }
-
-export default CUC;

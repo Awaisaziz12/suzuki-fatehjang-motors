@@ -16,67 +16,12 @@ import Missions from "../common/mission";
 const teamMembers = [
   
   {
-    id: 3,
-    img: muzammilpic,
-    name: "Muzammal Zaman",
-    title: "Service Manager After Sales",
-  },
- 
-  {
-    id: 5,
-    img: kalsoompic,
-    name: "Kulsoom Baloch",
+    id: 1,
+    img: hamayopic,
+    name: "Hamayun Bhatti",
     title: "Manager Sales",
   },
-  
-  {
-    id: 7,
-    img: umerpic,
-    name: "Umer Khan",
-    title: "Manager User Car",
-  },
-  {
-    id: 12,
-    img: Adeel,
-    name: "Adeel Mirza",
-    title: "Manager Corporate Sales",
-  },
-  {
-    id: 6,
-    img: idrees,
-    name: "Muhammad Idrees",
-    title: "Manager Suzuki Finance ",
-  },
-  {
-    id: 8,
-    img: ibtida,
-    name: "Ibtaida Hussain shah",
-    title: "Operation Manager",
-  },
-  // {
-  //   id: 9,
-  //   img: mushtaq,
-  //   name: "Muhammad Mushtaq",
-  //   title: " Accounts Manager",
-  // },
-  // {
-  //   id: 10,
-  //   img: almas,
-  //   name: "Muhammad Almaas",
-  //   title: "Bodyshop Manager",
-  // },
-  {
-    id: 11,
-    img: usmanparts,
-    name: "Muhammad Usman",
-    title: "Parts Manager",
-  },
-  {
-    id: 13,
-    img: Amjad,
-    name: "Awais Amjad",
-    title: "Manager Accounts",
-  },
+ 
   
 ];
 

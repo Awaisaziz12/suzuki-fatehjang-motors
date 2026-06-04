@@ -91,7 +91,7 @@ const SalesHome = () => {
 
 
           <div className="form-content flex align-items-center justify-content-center">
-          
+          <CarBookingForm/>
         </div>
 
       </div>

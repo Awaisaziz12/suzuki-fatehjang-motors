@@ -1,323 +1,347 @@
-  "use client";
-  import React, { useState, useEffect } from "react";
-  import { Modal, Button, Form, Alert } from "react-bootstrap";
-  import logo from "../../[locale]/public/Asset 1.svg";
-  import Image from "next/image";
+"use client";
+import React, { useState } from "react";
+import { Modal, Button, Form, Alert } from "react-bootstrap";
+import Image from "next/image";
+import logo from "../../[locale]/public/Asset 1.svg";
 
-  export function CarBookingForm() {
-    const [status, setStatus] = useState("");
-    const [show, setShow] = useState(false);
-    const [carModel, setCarModel] = useState("");
-    const [variant, setVariant] = useState("");
+export function CarBookingForm() {
+  const [show, setShow] = useState(false);
+  const [step, setStep] = useState(1);
+  const [status, setStatus] = useState("");
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+  const [variant, setVariant] = useState("");
 
-    const getColorsForModel = () => {
-      // Suzuki Fronx - Monotone
-      if (carModel === "suzuki-Fronx" && variant === "monotone") {
-        return [
-          "Silky Silver",
-          "Ice Greyish Blue",
-          "Mineral Grey",
-          "Jungle Green",
-          "Solid White",
-          "Super Black",
-        ];
-      }
+  // ✅ SAFE FORM STATE (NO ERRORS)
+  const [form, setForm] = useState({
+    yourName: "",
+    phone: "",
+    email: "",
+    carModel: "",
+    carColor: "",
+    bookingDate: "",
+    message: "",
+  });
 
-      // Suzuki Fronx - Two Tone
-      if (carModel === "suzuki-Fronx" && variant === "two-tone") {
-        return [
-          "Silky Silver  + Black Roof",
-          "Ice Greyish Blue  + Black Roof",
-          "Solid White  + Black Roof",
-        ];
-      }
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-      // Alto / Cultus
-      if (
-        carModel === "suzuki-Alto" ||
-        carModel === "suzuki-Cultus"
-      ) {
-        return ["White", "Black", "Silver", "Mineral Grey"];
-      }
+  const handleClose = () => {
+    setShow(false);
+    setStep(1);
+  };
 
-      return ["White", "Black", "Silver"];
-    };
+  const next = () => setStep((s) => Math.min(s + 1, 3));
+  const back = () => setStep((s) => Math.max(s - 1, 1));
 
-    useEffect(() => {
-      if (status) {
-        const timer = setTimeout(() => setStatus(""), 3000);
-        return () => clearTimeout(timer);
-      }
-    }, [status]);
+  const getColorsForModel = () => {
+    if (form.carModel === "suzuki-Fronx" && variant === "monotone") {
+      return [
+        "Silky Silver",
+        "Ice Greyish Blue",
+        "Mineral Grey",
+        "Jungle Green",
+        "Solid White",
+        "Super Black",
+      ];
+    }
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      setStatus("Submitting...");
+    if (form.carModel === "suzuki-Fronx" && variant === "two-tone") {
+      return [
+        "Silky Silver + Black Roof",
+        "Ice Greyish Blue + Black Roof",
+        "Solid White + Black Roof",
+      ];
+    }
 
-      const formData = new URLSearchParams({
-        name: e.currentTarget.yourName.value,
-        phone: e.currentTarget.phone.value,
-        email: e.currentTarget.email.value,
-        carModel: e.currentTarget.carModel.value,
-        variant: variant,
-        carColor: e.currentTarget.carColor.value,
-        bookingDate: e.currentTarget.bookingDate.value,
-        message: e.currentTarget.message.value,
+    if (form.carModel === "suzuki-Alto" || form.carModel === "suzuki-Cultus") {
+      return ["White", "Black", "Silver", "Mineral Grey"];
+    }
+
+    return ["White", "Black", "Silver"];
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("Submitting...");
+
+    const formData = new URLSearchParams({
+      name: form.yourName,
+      phone: form.phone,
+      email: form.email,
+      carModel: form.carModel,
+      variant: variant,
+      carColor: form.carColor,
+      bookingDate: form.bookingDate,
+      message: form.message,
+    });
+
+    try {
+      const response = await fetch(          "https://script.google.com/macros/s/AKfycbwyl_BTdm7BH1cFf8b4FdP910UQPNXdAw-bQKdb_FFWeY3nHp4lmVcs5Fn6Rh9hDNuETg/exec", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: formData.toString(),
       });
 
-      try {
-        const response = await fetch(
-          "https://script.google.com/macros/s/AKfycbyM7xhqNT2-oxcn_ZjX0GkRGQcEMQpv2lZuV3BLWjjgtfaAeENZwc6Scs5P9O9ICDnt/exec",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-            },
-            body: formData.toString(),
-          }
-        );
+      const result = await response.json();
 
-        const result = await response.json();
+      if (result.result === "success") {
+        setStatus("✅ Booking submitted successfully!");
 
-        if (result.result === "success") {
-          setStatus("✅ Booking request submitted successfully!");
-        } else {
-          setStatus("❌ Failed to submit. Please try again.");
-        }
-      } catch (error) {
-        console.error("Error submitting booking:", error);
-        setStatus("✅ Booking request submitted successfully!");
+        setTimeout(() => {
+          handleClose();
+          setForm({
+            yourName: "",
+            phone: "",
+            email: "",
+            carModel: "",
+            carColor: "",
+            bookingDate: "",
+            message: "",
+          });
+          setVariant("");
+          setStatus("");
+        }, 1000);
+      } else {
+        setStatus("❌ Failed to submit");
       }
-    };
+    } catch {
+      setStatus("❌ Network error");
+    }
+  };
 
-    return (
-      <>
-    <Button
-    onClick={handleShow}
-    className="booking-btn"
-  >
-    <span>Booking Form</span>
-  </Button>
+  return (
+    <>
+      {/* OPEN BUTTON */}
+      <Button
+  onClick={() => setShow(true)}
+  className="booking-btn"
+>
+   Booking Form 
+</Button>
 
-        <Modal
-          show={show}
-          onHide={handleClose}
-          centered
-          size="lg"
-          dialogClassName="custom-modal"
-        >
-          <Modal.Header
-            closeButton
-            className="text-white d-flex align-items-center"
+      {/* MODAL */}
+      <Modal
+        show={show}
+        onHide={handleClose}
+        centered
+        backdrop="static"
+        dialogClassName="finance-modal"
+      >
+        <Modal.Body className="p-3 position-relative">
+
+          {/* CLOSE BUTTON */}
+          <button
+            onClick={handleClose}
             style={{
-              backgroundColor: "#fff8f6",
-              borderTopLeftRadius: "8px",
-              borderTopRightRadius: "8px",
+              position: "absolute",
+              right: 12,
+              top: 10,
+              border: "none",
+              background: "transparent",
+              fontSize: 22,
             }}
           >
-            <Image
-              src={logo}
-              alt="Logo"
-              width={50}
-              height={50}
-              className="me-3"
-              style={{ borderRadius: "8px" }}
+            ✖
+          </button>
+
+          {/* HEADER */}
+          <div className="d-flex align-items-center gap-2 mb-2">
+            <Image src={logo} alt="logo" width={40} height={40} />
+            <div>
+              <h6 className="mb-0 fw-bold">Booking Form</h6>
+              <small className="text-muted">Step {step} of 3</small>
+            </div>
+          </div>
+
+          {/* PROGRESS */}
+          <div className="progress mb-3" style={{ height: 5 }}>
+            <div
+              className="progress-bar bg-danger"
+              style={{ width: `${(step / 3) * 100}%` }}
             />
+          </div>
 
-            <Modal.Title className="fw-bold fs-4 text-dark">
-              Book Your Car Now!
-            </Modal.Title>
-          </Modal.Header>
+          <Form onSubmit={handleSubmit}>
 
-          <Modal.Body style={{ backgroundColor: "#fff8f6" }}>
-            <Form onSubmit={handleSubmit}>
-              <div className="row">
-                {/* Full Name */}
-                <div className="col-md-6 mb-3">
-                  <Form.Label className="fw-semibold text-secondary">
-                    Full Name
-                  </Form.Label>
+            {/* STEP 1 */}
+            {step === 1 && (
+              <div className="d-grid gap-2">
+                <Form.Control
+                  name="yourName"
+                  placeholder="Full Name"
+                  value={form.yourName}
+                  onChange={handleChange}
+                  required
+                />
 
-                  <Form.Control
-                    name="yourName"
-                    type="text"
-                    placeholder="Your Full Name"
-                    required
-                    className="rounded-3 shadow-sm"
-                  />
-                </div>
+                <Form.Control
+                  name="phone"
+                  placeholder="Phone Number"
+                  value={form.phone}
+                  onChange={handleChange}
+                  required
+                />
 
-                {/* Phone */}
-                <div className="col-md-6 mb-3">
-                  <Form.Label className="fw-semibold text-secondary">
-                    Phone Number
-                  </Form.Label>
+                <Form.Control
+                  name="email"
+                  placeholder="Email"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                />
 
-                  <Form.Control
-                    name="phone"
-                    type="text"
-                    placeholder="+92 *** *******"
-                    required
-                    className="rounded-3 shadow-sm"
-                  />
-                </div>
+                <Button onClick={next}>Next</Button>
+              </div>
+            )}
 
-                {/* Email */}
-                <div className="col-md-6 mb-3">
-                  <Form.Label className="fw-semibold text-secondary">
-                    Email Address
-                  </Form.Label>
+            {/* STEP 2 */}
+            {step === 2 && (
+              <div className="d-grid gap-2">
+                <Form.Select
+                  name="carModel"
+                  value={form.carModel}
+                  onChange={(e) => {
+                    handleChange(e);
+                    setVariant("");
+                  }}
+                  required
+                >
+                  <option value="">Select Car Model</option>
+                  <option value="suzuki-Fronx">Fronx</option>
+                  <option value="suzuki-Swift">Swift</option>
+                  <option value="suzuki-Cultus">Cultus</option>
+                  <option value="suzuki-Alto">Alto</option>
+                  <option value="suzuki-Every">Every</option>
+                </Form.Select>
 
-                  <Form.Control
-                    name="email"
-                    type="email"
-                    placeholder="email@example.com"
-                    required
-                    className="rounded-3 shadow-sm"
-                  />
-                </div>
-
-                {/* Car Model */}
-                <div className="col-md-6 mb-3">
-                  <Form.Label className="fw-semibold text-secondary">
-                    Preferred Car Model
-                  </Form.Label>
-
+                {form.carModel === "suzuki-Fronx" && (
                   <Form.Select
-                    name="carModel"
+                    onChange={(e) => setVariant(e.target.value)}
                     required
-                    onChange={(e) => {
-                      setCarModel(e.target.value);
-                      setVariant("");
-                    }}
-                    className="rounded-3 shadow-sm"
                   >
-                    <option value="">Select a Car Model</option>
-                    <option value="suzuki-Fronx">Suzuki Fronx</option>
-                    <option value="suzuki-Swift">Suzuki Swift</option>
-                    <option value="suzuki-Cultus">Suzuki Cultus</option>
-                    <option value="suzuki-Alto">Suzuki Alto</option>
-                    <option value="suzuki-Every">Suzuki Every</option>
+                    <option value="">Select Variant</option>
+                    <option value="monotone">Monotone</option>
+                    <option value="two-tone">Two Tone</option>
                   </Form.Select>
-                </div>
-
-                {/* Fronx Variant */}
-                {carModel === "suzuki-Fronx" && (
-                  <div className="col-md-6 mb-3">
-                    <Form.Label className="fw-semibold text-secondary">
-                      Fronx Variant
-                    </Form.Label>
-
-                    <Form.Select
-                      name="variant"
-                      required
-                      onChange={(e) => setVariant(e.target.value)}
-                      className="rounded-3 shadow-sm"
-                    >
-                      <option value="">Select Variant</option>
-                      <option value="monotone">Monotone</option>
-                      <option value="two-tone">Two Tone</option>
-                    </Form.Select>
-                  </div>
                 )}
 
-                {/* Car Color */}
-                <div className="col-md-6 mb-3">
-                  <Form.Label className="fw-semibold text-secondary">
-                    Preferred Car Color
-                  </Form.Label>
+                <Form.Select
+                  name="carColor"
+                  value={form.carColor}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select Color</option>
+                  {getColorsForModel().map((c) => (
+                    <option key={c}>{c}</option>
+                  ))}
+                </Form.Select>
 
-                  <Form.Select
-                    name="carColor"
-                    required
-                    className="rounded-3 shadow-sm"
-                  >
-                    <option value="">Select a Car Color</option>
-
-                    {getColorsForModel().map((color) => (
-                      <option key={color} value={color}>
-                        {color}
-                      </option>
-                    ))}
-                  </Form.Select>
-                </div>
-
-                {/* Booking Date */}
-                <div className="col-md-6 mb-3">
-                  <Form.Label className="fw-semibold text-secondary">
-                    Preferred Booking Date
-                  </Form.Label>
-
-                  <Form.Control
-                    name="bookingDate"
-                    type="date"
-                    required
-                    className="rounded-3 shadow-sm"
-                  />
-                </div>
-
-                {/* Message */}
-                <div className="col-12 mb-3">
-                  <Form.Label className="fw-semibold text-secondary">
-                    Additional Comments
-                  </Form.Label>
-
-                  <Form.Control
-                    name="message"
-                    as="textarea"
-                    rows={3}
-                    placeholder="Any additional requests or information"
-                    className="rounded-3 shadow-sm"
-                  />
-                </div>
-
-                {/* Terms */}
-                <div className="col-12 mb-3">
-                  <Form.Check
-                    type="checkbox"
-                    id="termsCheck"
-                    label="I accept the Terms & Conditions and acknowledge the Privacy Policy."
-                    required
-                    className="fw-medium"
-                  />
-                </div>
-
-                {/* Status */}
-                {status && (
-                  <Alert
-                    variant={
-                      status.includes("successfully")
-                        ? "success"
-                        : "danger"
-                    }
-                    className="fw-medium rounded-3"
-                  >
-                    {status}
-                  </Alert>
-                )}
-
-                {/* Submit */}
-                <div className="col-12 text-end">
-                  <Button
-                    type="submit"
-                    className="px-4 py-2 rounded-5 fw-bold shadow-sm"
-                    style={{
-                      background:
-                        "linear-gradient(90deg, #e50000, #ff4d4d)",
-                      border: "none",
-                      color: "#fff",
-                    }}
-                  >
-                    🚗 Submit Booking
+                <div className="d-flex gap-2">
+                  <Button variant="secondary" onClick={back}>
+                    Back
                   </Button>
+                  <Button onClick={next}>Next</Button>
                 </div>
               </div>
-            </Form>
-          </Modal.Body>
-        </Modal>
-      </>
-    );
+            )}
+
+            {/* STEP 3 */}
+            {step === 3 && (
+              <div className="d-grid gap-2">
+                <Form.Control
+                  type="date"
+                  name="bookingDate"
+                  value={form.bookingDate}
+                  onChange={handleChange}
+                  required
+                />
+
+                <Form.Control
+                  as="textarea"
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  rows={2}
+                  placeholder="Message (optional)"
+                />
+
+                <Form.Check label="I agree to terms" required />
+
+                {status && <Alert>{status}</Alert>}
+
+                <div className="d-flex gap-2">
+                  <Button variant="secondary" onClick={back}>
+                    Back
+                  </Button>
+                  <Button type="submit">Submit</Button>
+                </div>
+              </div>
+            )}
+
+          </Form>
+        </Modal.Body>
+      </Modal>
+
+      {/* SMALL FIX */}
+      <style jsx>{`
+        .finance-modal .modal-dialog {
+          max-width: 420px;
+        }
+          .modern-book-btn {
+  background: linear-gradient(135deg, #ff2d2d, #ff6b6b);
+  border: none;
+  padding: 12px 22px;
+  border-radius: 50px;
+  font-weight: 600;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 20px rgba(255, 45, 45, 0.3);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* hover effect */
+.modern-book-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(255, 45, 45, 0.45);
+}
+
+/* click effect */
+.modern-book-btn:active {
+  transform: scale(0.96);
+}
+
+/* shine animation */
+.modern-book-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 60%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: skewX(-25deg);
+}
+
+.modern-book-btn:hover::after {
+  animation: shine 0.7s ease;
+}
+
+@keyframes shine {
+  100% {
+    left: 130%;
   }
+}
+      `}</style>
+    </>
+  );
+}

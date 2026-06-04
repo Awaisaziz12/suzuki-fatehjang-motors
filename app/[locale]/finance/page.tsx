@@ -1,6 +1,6 @@
-import { Link } from "@/navigation";
-import Constants from "@/data/Constants";
+
 import { CarBookingForm } from "../common/booking-form-new-cars";
+import { FinanceBookingForm } from "../common/bookingfinance";
 
 export default function Finance() {
   return (
@@ -19,7 +19,7 @@ export default function Finance() {
             We make vehicle ownership simple and affordable through
             flexible financing and leasing solutions tailored to your needs.
           </p>
-          <CarBookingForm/>
+    <FinanceBookingForm/>
         </div>
 
         {/* Cards */}

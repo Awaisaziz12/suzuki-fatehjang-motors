@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "@/navigation";
 import Image from "next/image";
 import logo from "../../[locale]/public/logopng.svg";
 import { usePathname } from "next/navigation";
-import { lightNavPaths } from "@/lib/utils";
-import { CarBookingForm } from "./booking-form-new-cars";
+
+import Constants from "@/data/Constants";
 
 type HeaderProps = {
   children: React.ReactNode;
@@ -16,48 +16,7 @@ const Header = ({ children }: HeaderProps) => {
   const pathname = usePathname();
 
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const [showHeader, setShowHeader] = useState(true);
-  const [lastScroll, setLastScroll] = useState(0);
 
-  const theme = lightNavPaths.some((path) => pathname.includes(path))
-    ? "light"
-    : "dark";
-
-
-useEffect(() => {
-  let lastScrollY = window.scrollY;
-  let ticking = false;
-
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY;
-
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        // top pe hamesha show
-        if (currentScrollY < 10) {
-          setShowHeader(true);
-        }
-        // scroll up → show
-        else if (currentScrollY < lastScrollY) {
-          setShowHeader(true);
-        }
-        // scroll down → hide
-        else {
-          setShowHeader(false);
-        }
-
-        lastScrollY = currentScrollY;
-        ticking = false;
-      });
-
-      ticking = true;
-    }
-  };
-
-  window.addEventListener("scroll", handleScroll, { passive: true });
-
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
 
   const toggleMenu = () => {
     setShowMobileMenu(!showMobileMenu);
@@ -74,15 +33,14 @@ useEffect(() => {
 
   return (
     <nav
-      id="mainNav"
-      className={`navbar navbar-expand-lg fixed-top shadow-sm`}
-      style={{
-        background: "#000",
-        transition: "all .35s ease",
-        transform: showHeader ? "translateY(0)" : "translateY(-100%)",
-        zIndex: 9999,
-      }}
-    >
+  id="mainNav"
+  className="navbar navbar-expand-lg fixed-top shadow-sm"
+  style={{
+    background: "#000",
+    top: "38px", // TopBar ki height
+    zIndex: 9998,
+  }}
+>
       <div className="container">
 
         {/* Logo */}
@@ -90,8 +48,8 @@ useEffect(() => {
           <Image
             src={logo}
             alt="logo"
-            width={55}
-            height={55}
+            width={25}
+            height={25}
             priority
           />
         </Link>
@@ -101,10 +59,23 @@ useEffect(() => {
           {children}
         </div>
 
-        {/* Desktop Button */}
-        <div className="d-none d-lg-block">
-          <CarBookingForm />
-        </div>
+       {/* Desktop WhatsApp Button */}
+<div className="d-none d-lg-block">
+  
+  <a
+    href={"https://wa.me/" + Constants.PHONE.replace(/\D/g, "")}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-green whatsapp-btn text-white d-flex align-items-center gap-1 px-2 py-1 rounded"
+  >
+    {/* WhatsApp SVG Icon */}
+
+  <i className="bi bi-whatsapp text-white fs-7"></i>
+    WhatsApp Now
+
+    
+  </a>
+</div>
 
         {/* Mobile Toggle */}
         <button
@@ -138,9 +109,7 @@ useEffect(() => {
         <div className="d-flex flex-column gap-3 text-white">
           {children}
 
-          <div className="pt-2">
-            <CarBookingForm />
-          </div>
+          
         </div>
       </div>
     </nav>

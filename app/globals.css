@@ -34,9 +34,20 @@ body {
   z-index: 10;
 }
 
+/* example (SCSS) */
 .topbar {
-  height: 32px;
-  
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header {
+  position: sticky;
+  top: 40px; /* topbar height */
+  z-index: 40;
+}
+.header {
+  top: var(--topbar-height);
 }
 #mainNav {
   position: absolute;

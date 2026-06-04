@@ -31,28 +31,27 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} min-h-full flex flex-col`}>
+    <body className={`${inter.className} min-h-full flex flex-col`}>
 
-        <Providers>
-          <TrackingManager />
+  <Providers>
+    <TrackingManager />
 
-          {/* 🔥 TOP BAR (FIRST) */}
-          <TopBar />
+    {/* FIXED TOP SECTION */}
+            <TopBar />
 
-          {/* 🔥 HEADER (SECOND) */}
-          <Header>
-            <NavLinks />
-          </Header>
+      <Header>
+        <NavLinks />
+      </Header>
 
-          {/* MAIN CONTENT */}
-          <main className="flex-1">{children}</main>
+    {/* MAIN CONTENT */}
+    <main style={{ paddingTop: "110px" }}>
+  {children}
+</main>
 
-          {/* FOOTER */}
-          <Footer />
+    <Footer />
+  </Providers>
 
-        </Providers>
-
-      </body>
+</body>
     </html>
   );
 }

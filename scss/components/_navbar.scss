@@ -529,6 +529,8 @@
 }
 
 /* FEATURES */
+
+
 .feature-card-3d {
   background: #111827;
   box-shadow: 8px 8px 20px #05070c, -8px -8px 20px #1a2238;
@@ -676,4 +678,29 @@
   width: 100%;
   height: auto;
   display: block;
+}
+#mainNav {
+  height: 78px;
+}
+
+#mainNav .navbar-brand img {
+  transition: 0.3s;
+}
+
+#mainNav .navbar-brand:hover img {
+  transform: scale(1.08);
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+.swiper-slide-box {
+  height: 100vh;
+  position: relative;
+}
+
+.swiper-img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
 }

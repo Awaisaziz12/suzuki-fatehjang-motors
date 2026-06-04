@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   let paths = [
     "/",
+    "/finance",
     "/blog/blog-post",
     "/aftersale",
     "/aftersale/spareparts",

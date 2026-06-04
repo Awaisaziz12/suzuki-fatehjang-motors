@@ -28,8 +28,8 @@ function Footer() {
               📞 UAN: {Constants.PHONE}
             </a>
 
-            <a href="tel:03493737455" className="contact-box">
-              📱 Mobile: 0349-3737455
+            <a href={`tel:${Constants.PHONE}`} className="contact-box">
+              📱 Phone: {Constants.PHONE}
             </a>
           </div>
 
@@ -51,10 +51,10 @@ function Footer() {
         <div className="footer-bottom">
 
           <div className="social">
-            <a href="#"><i className="bi bi-facebook"></i></a>
-            <a href="#"><i className="bi bi-instagram"></i></a>
-            <a href="#"><i className="bi bi-youtube"></i></a>
-            <a href="#"><i className="bi bi-linkedin"></i></a>
+            <a href="https://www.facebook.com/SuzukiFatehjangMotor"><i className="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/suzukifatehjangmotors"><i className="bi bi-instagram"></i></a>
+            <a href="https://www.youtube.com/channel/UC7Zdh3yjhWIA8fsDc03hSCg"><i className="bi bi-youtube"></i></a>
+            <a href="https://pk.linkedin.com/company/suzuki-fatehjang-motors-pvt-ltd"><i className="bi bi-linkedin"></i></a>
           </div>
 
           <p className="copy">

@@ -23,7 +23,7 @@ function Carosilfronx() {
 
   return (
     
-     <section className="mt-6">
+     <section className="">
           <Carousel
             autoPlay={true}
             interval={autoSlideInterval}
@@ -34,7 +34,8 @@ function Carosilfronx() {
           >
             {images.map((image, index) => (
               <div key={index}>
-                <Image src={image} layout="responsive" alt="background-image" />
+                <Image src={image} layout="responsive "  alt="background-image" 
+               />
                 
               </div>
             ))}

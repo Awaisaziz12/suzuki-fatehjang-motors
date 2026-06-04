@@ -1,70 +1,42 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import alto1 from "../../public/cuccar/1.jpeg";
-import alto2 from "../../public/cuccar/2.jpeg";
-import alto3 from "../../public/cuccar/3.jpeg";
-import alto4 from "../../public/cuccar/4.jpeg";
-import alto5 from "../../public/cuccar/5.jpeg";
-import alto6 from "../../public/cuccar/6.jpeg";
+import alto1 from "./alto.png";
+import alto2 from "./every.png";
+import alto3 from "./alto3.png";
+
 import { Link } from "@/navigation";
 import Constants from "@/data/Constants";
 
 const carData = [
   {
-    model: "Alto VX",
-    price: 200000,
-    mileage: "34,000 km",
-    year: 2022,
+    model: "Alto VXR",
+    price: 3200000,
+    mileage: "180,000 km",
+    year: 2025,
     brand: "Alto",
     img: alto1,
     isSold: false,
   },
   {
-    model: "Alto VX",
-    price: 200000,
-    mileage: "70,000 km",
-    year: 2017,
-    brand: "Alto",
+    model: "Every vx ",
+    price: 2550000,
+    mileage: "167 km",
+    year: 2025,
+    brand: "Every",
     img: alto2,
     isSold: false,
   },
   {
-    model: "Mehran VXR",
-    price: 1280000,
-    mileage: "78,000 km",
-    year: 2014,
-    brand: "Mehran",
+    model: "Alto VXL AGS ",
+    price: 3400000,
+    mileage: "30000 km",
+    year: 2025,
+    brand: "Alto",
     img: alto3,
     isSold: false,
   },
-  {
-    model: "Alto VXR",
-    price: 2575000,
-    mileage: "42,000 km",
-    year: 2022,
-    brand: "Alto",
-    img: alto5,
-    isSold: true,
-  },
-  {
-    model: "Alto AGS",
-    price: 2650000,
-    mileage: "36,000 km",
-    year: 2022,
-    brand: "Alto",
-    img: alto4,
-    isSold: false,
-  },
-  {
-    model: "Alto VXR",
-    price: 2570000,
-    mileage: "27,000 km",
-    year: 2022,
-    brand: "Alto",
-    img: alto6,
-    isSold: false,
-  },
+  
 ];
 
 export default function CUC() {
@@ -123,7 +95,7 @@ export default function CUC() {
 
       {/* LEFT TEXT */}
       <div>
-        <h1 className="fw-bold mb-1 text-white">
+        <h1 className="fw-bold mb-1 display-4 ">
           Available Used Cars
         </h1>
         <p className="text-light opacity-75 mb-0">
@@ -136,7 +108,7 @@ export default function CUC() {
         <a
           href="#"
           data-bs-toggle="dropdown"
-          className="text-white text-decoration-none"
+          className=" text-decoration-none"
         >
           Sort by
         </a>
@@ -174,7 +146,7 @@ export default function CUC() {
               <h5 className="mb-3">Car Brands</h5>
 
               <ul className="list-unstyled">
-                {["Alto", "Mehran", "Cultus", "Wagon-R", "Swift", "Ravi"].map((brand, i) => (
+                {["Alto", "Mehran", "Cultus", "Wagon-R", "Swift", "Every"].map((brand, i) => (
                   <li key={i}>
                     <label className="d-flex gap-2 align-items-center mb-2">
                       <input
@@ -237,40 +209,128 @@ export default function CUC() {
       </div>
 
       {/* INLINE 3D CSS */}
-      <style jsx>{`
-        .car-section-bg{
-          background: linear-gradient(135deg,#0f172a,#1e293b);
-        }
+    <style jsx>{`
+  /* PAGE BACKGROUND (LUXURY LIGHT GRADIENT) */
+  .car-section-bg{
+    background: radial-gradient(circle at top, #f8fafc, #eef2f7 60%, #e9eef5);
+    min-height: 100vh;
+  }
 
-        .header-3d{
-          background: linear-gradient(145deg,#111827,#1f2937);
-          box-shadow: 10px 10px 25px #0b1220, -10px -10px 25px #1f2a3a;
-        }
+  /* TOP HEADER (PREMIUM GLASS PANEL) */
+  .header-3d{
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 22px;
+    box-shadow:
+      0 25px 60px rgba(0,0,0,0.08),
+      inset 0 1px 0 rgba(255,255,255,0.8);
+  }
 
-        .sort-3d{
-          background: rgba(255,255,255,0.1);
-          backdrop-filter: blur(10px);
-          box-shadow: 5px 5px 15px #0b1220;
-        }
+  /* SORT BUTTON (SOFT FLOATING CHIP) */
+  .sort-3d{
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 999px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    transition: all 0.25s ease;
+  }
 
-        .filter-3d{
-          background: #111827;
-          color: white;
-          box-shadow: 10px 10px 30px #0b1220;
-        }
+  .sort-3d:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  }
 
-        .car-card-3d{
-          background: #0f172a;
-          color: white;
-          box-shadow: 10px 10px 25px #0b1220;
-          transition: 0.3s;
-        }
+  /* FILTER PANEL (SIDEBAR LUXURY CARD) */
+  .filter-3d{
+    background: #ffffff;
+    border-radius: 24px;
+    border: 1px solid #eef1f6;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.08);
+    padding: 24px;
+    position: sticky;
+    top: 20px;
+  }
 
-        .car-card-3d:hover{
-          transform: translateY(-10px) scale(1.02);
-          box-shadow: 15px 15px 35px #000;
-        }
-      `}</style>
+  /* CAR CARD (MAIN PREMIUM PRODUCT CARD) */
+  .car-card-3d{
+    background: #ffffff;
+    border-radius: 22px;
+    border: 1px solid #f1f4f8;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* HOVER LIFT (REAL LUXURY FEEL) */
+  .car-card-3d:hover{
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 35px 80px rgba(0,0,0,0.14);
+  }
+
+  /* IMAGE ZOOM (SMOOTH LUXURY MOTION) */
+  .car-img{
+    overflow: hidden;
+    border-radius: 18px;
+  }
+
+  .car-img img{
+    transition: transform 0.6s ease;
+  }
+
+  .car-card-3d:hover .car-img img{
+    transform: scale(1.08);
+  }
+
+  /* TITLE */
+  h5{
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: -0.2px;
+  }
+
+  /* PRICE (HIGHLIGHT PREMIUM ORANGE) */
+  h4.text-warning{
+    color: #ff6a00 !important;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+  }
+
+  /* BADGE (SOFT GLASS STYLE) */
+  .badge{
+    padding: 6px 12px;
+    font-size: 11px;
+    border-radius: 999px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  }
+
+  /* BUTTON (MODERN DARK CTA) */
+  .btn-dark{
+    background: linear-gradient(135deg, #0f172a, #111827);
+    border: none;
+    border-radius: 999px;
+    font-weight: 500;
+    transition: all 0.25s ease;
+  }
+
+  .btn-dark:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  }
+
+  /* TEXT MUTED */
+  .text-light{
+    color: #6b7280 !important;
+  }
+
+  /* SMOOTH GLOBAL FEEL */
+  *{
+    scroll-behavior: smooth;
+  }
+`}</style>
     </section>
   );
 }

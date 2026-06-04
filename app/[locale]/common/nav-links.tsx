@@ -38,9 +38,14 @@ const linksConfig: NavLink[] = [
     path: "/aftersale",
   },
   {
+    locale: NavLinksLocale.Finance,
+    path: "/finance",
+    
+  },
+  {
         locale: NavLinksLocale.CUC,
         path: "/sales/cuc",
-      },
+  },
   {
     locale: NavLinksLocale.Aboutus,
     path: "/aboutus",

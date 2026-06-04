@@ -6,7 +6,7 @@ export default function CareCenterLandingPage() {
     <div className="care-page">
 
       {/* HERO 3D SECTION */}
-      <section className="hero-3d text-center mt-7">
+      <section className="hero-3d text-center pt-15">
         <div className="container">
           <div className="hero-card-3d p-5 rounded-5">
 

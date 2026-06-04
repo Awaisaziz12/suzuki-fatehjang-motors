@@ -18,7 +18,7 @@ const teamMembers = [
   {
     id: 1,
     img: hamayopic,
-    name: "Hamayun Bhatti",
+    name: "Hamayun Gulzar Bhatti",
     title: "Manager Sales",
   },
  

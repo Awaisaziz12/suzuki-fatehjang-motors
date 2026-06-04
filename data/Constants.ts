@@ -1,12 +1,12 @@
 const Constants = {
-  PHONE: "+92 349 3737455",
-  CRO: "+92 349 3737455",
-  CRO2: "+92 349 3737455",
-  USEDCAR: "+92 349 3737455",
-  BODYSHOP: "+92 349 3737455",
-  Insurance: "+92 349 3737455",
-  finance: "+92 349 3737455",
-  HR: "+92 349 3737455",
+  PHONE: "+92 310 1111373",
+  CRO: "+92 310 1111373",
+  CRO2: "+92 310 1111373",
+  USEDCAR: "+92 310 1111373",
+  BODYSHOP: "+92 310 1111373",
+  Insurance: "+92 310 1111373",
+  finance: "+92 310 1111373",
+  HR: "+92 310 1111373",
   GOOGLE_MAP:
     "https://www.google.com/maps/dir//299%2FA+Main+Peshawar+Rd,+Rawalpindi,+Punjab+46000/@33.6022897,72.9475839,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x38df94659e659eb5:0x499dee70b9674796!2m2!1d73.0299851!2d33.602317?entry=ttu&g_ep=EgoyMDI0MTAwMi4xIKXMDSoASAFQAw%3D%3D",
 };

@@ -73,6 +73,7 @@ async function Contact() {
                   alt="map"
                   className="map-img"
                   priority
+                  layout="responsive"
                 />
 
               </Link>

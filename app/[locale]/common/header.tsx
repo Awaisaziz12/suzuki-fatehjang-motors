@@ -1,13 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "@/navigation";
 import Image from "next/image";
 import logo from "../../[locale]/public/logopng.svg";
 import { usePathname } from "next/navigation";
-import { useTranslations } from "next-intl";
 import { lightNavPaths } from "@/lib/utils";
-import Constants from "@/data/Constants";
 import { CarBookingForm } from "./booking-form-new-cars";
 
 type HeaderProps = {
@@ -15,75 +13,136 @@ type HeaderProps = {
 };
 
 const Header = ({ children }: HeaderProps) => {
-  const t = useTranslations("header");
   const pathname = usePathname();
 
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [showHeader, setShowHeader] = useState(true);
+  const [lastScroll, setLastScroll] = useState(0);
 
-  const theme = lightNavPaths.some((p) => pathname.includes(p))
+  const theme = lightNavPaths.some((path) => pathname.includes(path))
     ? "light"
     : "dark";
 
-  const toggleMenu = () => {
-    setShowMobileMenu((prev) => {
-      document.body.style.overflow = !prev ? "hidden" : "auto";
-      return !prev;
-    });
+
+useEffect(() => {
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        // top pe hamesha show
+        if (currentScrollY < 10) {
+          setShowHeader(true);
+        }
+        // scroll up → show
+        else if (currentScrollY < lastScrollY) {
+          setShowHeader(true);
+        }
+        // scroll down → hide
+        else {
+          setShowHeader(false);
+        }
+
+        lastScrollY = currentScrollY;
+        ticking = false;
+      });
+
+      ticking = true;
+    }
   };
 
-  const closeMenu = (e: React.MouseEvent<HTMLDivElement>) => {
-    if ((e.target as HTMLElement).closest(".dropdown")) return;
+  window.addEventListener("scroll", handleScroll, { passive: true });
+
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
+  const toggleMenu = () => {
+    setShowMobileMenu(!showMobileMenu);
+    document.body.style.overflow = !showMobileMenu ? "hidden" : "auto";
+  };
+
+  const closeMenu = (event: React.MouseEvent<HTMLDivElement>) => {
+    const target = event.target as HTMLElement;
+    if (target.closest(".dropdown")) return;
+
     setShowMobileMenu(false);
     document.body.style.overflow = "auto";
   };
 
   return (
-    <nav id="mainNav" className="navbar navbar-expand-lg navbar-sticky bg-black text-white z-2">
-      <div className="container d-flex align-items-center justify-content-between ">
+    <nav
+      id="mainNav"
+      className={`navbar navbar-expand-lg fixed-top shadow-sm`}
+      style={{
+        background: "#000",
+        transition: "all .35s ease",
+        transform: showHeader ? "translateY(0)" : "translateY(-100%)",
+        zIndex: 9999,
+      }}
+    >
+      <div className="container">
 
-        {/* LOGO */}
+        {/* Logo */}
         <Link href="/" className="navbar-brand">
-          <Image src={logo} alt="logo" width={45} height={45} />
+          <Image
+            src={logo}
+            alt="logo"
+            width={55}
+            height={55}
+            priority
+          />
         </Link>
 
-        {/* MOBILE TOGGLE */}
+        {/* Desktop Menu */}
+        <div className="d-none d-lg-flex flex-grow-1 justify-content-center text-white">
+          {children}
+        </div>
+
+        {/* Desktop Button */}
+        <div className="d-none d-lg-block">
+          <CarBookingForm />
+        </div>
+
+        {/* Mobile Toggle */}
         <button
-          className="navbar-toggler d-lg-none text-white"
+          className="navbar-toggler border-0 d-lg-none"
           onClick={toggleMenu}
         >
-          <span className="bi bi-list"></span>
+          <span className="bi bi-list text-white fs-2"></span>
         </button>
-
-        <div className="d-none d-lg-flex gap-4 align-items-center w-100 text-white">
-          <div className="w-100 text-white">
-            {children}
-          </div>
-        </div>
-<div className="d-none d-lg-block">
-  <CarBookingForm />
-</div>
-
       </div>
 
       {/* MOBILE MENU */}
       <div
-        className={`mobile-menu d-lg-none bg-black text-white ${showMobileMenu ? "show" : "d-none"
-          }`}
         onClick={closeMenu}
+        className="d-lg-none"
         style={{
-          position: "absolute",
-          top: "70px",
+          position: "fixed",
+          top: "78px",
           left: 0,
           width: "100%",
+          background: "#000",
           padding: "20px",
-          zIndex: 999,
+          transition: ".3s",
+          transform: showMobileMenu
+            ? "translateY(0)"
+            : "translateY(-120%)",
+          opacity: showMobileMenu ? 1 : 0,
+          visibility: showMobileMenu ? "visible" : "hidden",
+          zIndex: 9998,
         }}
       >
-        <div className="d-flex flex-column gap-3">
+        <div className="d-flex flex-column gap-3 text-white">
           {children}
+
+          <div className="pt-2">
+            <CarBookingForm />
+          </div>
         </div>
       </div>
-
     </nav>
   );
 };

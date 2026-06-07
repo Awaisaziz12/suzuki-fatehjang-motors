@@ -31,7 +31,7 @@ const teamMembers = [
   {
     id: 7,
     img: samad,
-    name: "Samad",
+    name: "Adbdul Samad Nadeem",
     title: "Used Car Manager",
   },
  
@@ -45,24 +45,21 @@ const teamMembers = [
   {
     id: 5,
     img: qulbabas,
-    name: "Qulb Abbas",
+    name: "Qalb e Abbas",
     title: "IT Manager",
   },
- 
-    
   {
     id: 8,
     img: body,
     name: "Ikram Ali",
     title: "Body Shop Manager",
-  }
-  , {
+  },
+   {
     id: 2,
     img: meesam,
     name: "M Meesam Ali",
     title: "HR Manager",
   },
-
 ];
 
 export default function Team() {

@@ -34,11 +34,12 @@ const Header = ({ children }: HeaderProps) => {
   return (
     <nav
   id="mainNav"
-  className="navbar navbar-expand-lg fixed-top shadow-sm"
+  className="navbar navbar-expand-lg fixed-top shadow-sm flex"
   style={{
     background: "#000",
     top: "38px", // TopBar ki height
     zIndex: 9998,
+width: "100%",
   }}
 >
       <div className="container">
@@ -48,14 +49,14 @@ const Header = ({ children }: HeaderProps) => {
           <Image
             src={logo}
             alt="logo"
-            width={25}
-            height={25}
+            width={30}
+            height={30}
             priority
           />
         </Link>
 
         {/* Desktop Menu */}
-        <div className="d-none d-lg-flex flex-grow-1 justify-content-center text-white">
+        <div className="d-none d-lg-flex flex-grow-1 justify-content-center text-white ">
           {children}
         </div>
 
@@ -92,7 +93,7 @@ const Header = ({ children }: HeaderProps) => {
         className="d-lg-none"
         style={{
           position: "fixed",
-          top: "78px",
+          top: "100px",
           left: 0,
           width: "100%",
           background: "#000",
@@ -106,7 +107,7 @@ const Header = ({ children }: HeaderProps) => {
           zIndex: 9998,
         }}
       >
-        <div className="d-flex flex-column gap-3 text-white">
+        <div className="d-flex flex-column gap-2 text-white">
           {children}
 
           

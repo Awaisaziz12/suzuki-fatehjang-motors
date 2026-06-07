@@ -25,7 +25,7 @@ function Carosilaftersale() {
 
   return (
     
-     <section className="mt-6">
+     <section className="">
           <Carousel
             autoPlay={true}
             interval={autoSlideInterval}

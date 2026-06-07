@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Moazzmpic from "./WhatsApp Image 2026-06-03 at 2.21.34 PM.jpeg";
+import Moazzmpic from "./pictures/WhatsApp Image 2026-06-03 at 2.21.34 PM.jpeg";
 import Team from "./team";
 import { getTranslations } from "next-intl/server";
 
@@ -8,44 +8,51 @@ export default async function AboutUspage() {
 
   return (
     <>
-      <section className="py-15 py-xl-20 bg-light">
+      {/* HERO ABOUT SECTION */}
+      <section className="py-20 bg-light">
         <div className="container">
-          <div className="row align-items-center justify-content-center justify-content-lg-between">
-            <div
-              className="col-md-8 col-lg-5 mb-5 mb-xl-0"
-              data-aos-delay="100"
-            >
-              <Image
-                src={Moazzmpic}
-                alt="awais_image"
-                width={600}
-                height={500}
-                layout="responsive"
-              />
+          <div className="row align-items-center g-5">
+
+            {/* IMAGE SIDE */}
+            <div className="col-lg-6">
+              <div className="position-relative">
+                <Image
+                  src={Moazzmpic}
+                  alt="about image"
+                  width={700}
+                  height={600}
+                  className="img-fluid rounded-4 shadow-lg"
+                />
+              </div>
             </div>
-            <div
-              className="col-lg-6 text-center text-lg-start"
-              data-aos="fade-right"
-              data-aos-delay="100"
-            >
-              <h2> {t("name1")} </h2>
-              <ul className="list-group list-group-separated">
-                <li className="list-group-item py-4">
-                  <p className="text-muted lead">
-                    <span className="text-black">{t("dir")} </span> {t("msg1")}
-                  </p>
-                </li>
-              </ul>
+
+            {/* TEXT SIDE */}
+            <div className="col-lg-6">
+             
+
+              <h2 className="fw-bold mb-3">
+                {t("name1")}
+              </h2>
+
+              <p className="text-muted fs-5 mb-4">
+                <span className="fw-semibold text-dark">{t("dir")}</span>{" "}
+                {t("msg1")}
+              </p>
+
+             
             </div>
+
           </div>
         </div>
-        <br />
-        
       </section>
 
-      <Team />
-      <br />
-      <br />
+      {/* TEAM SECTION */}
+
+        
+
+          {/* TEAM COMPONENT */}
+          <Team />
+
     </>
   );
 }

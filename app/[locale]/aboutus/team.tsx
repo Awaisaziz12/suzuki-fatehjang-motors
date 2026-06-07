@@ -7,7 +7,7 @@ import qulbabas from "./pictures/Qalbeabas.jpeg";
 import qurbanali from "./pictures/qurbanali.jpeg";
 import samad from "./pictures/samad.jpeg";
 import body from "./pictures/body.jpeg";
-
+import sameer from "./pictures/sameer.jpeg";
 const teamMembers = [
   
   {
@@ -22,6 +22,7 @@ const teamMembers = [
     name: "Qurban Ali",
     title: "Parts Manager",
   },
+  
   {
     id: 4,
     img: ikram,
@@ -41,7 +42,12 @@ const teamMembers = [
     name: "Anees Bibi",
     title: "Suzuki Finance Manager",
   },
-  
+   {
+    id: 8,
+    img: sameer,
+    name: "Sameer Aslam",
+    title: "Accounts Manager",
+  },
   {
     id: 5,
     img: qulbabas,
@@ -57,7 +63,7 @@ const teamMembers = [
    {
     id: 2,
     img: meesam,
-    name: "M Meesam Ali",
+    name: "Meesam khan",
     title: "HR Manager",
   },
 ];

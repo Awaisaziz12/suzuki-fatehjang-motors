@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Moazzmpic from "./pictures/WhatsApp Image 2026-06-03 at 2.21.34 PM.jpeg";
+import Moazzmpic from "./pictures/Moazzambaig.jpeg";
 import Team from "./team";
 import { getTranslations } from "next-intl/server";
 

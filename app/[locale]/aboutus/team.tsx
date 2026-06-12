@@ -9,59 +9,59 @@ import samad from "./pictures/samad.jpeg";
 import body from "./pictures/body.jpeg";
 import sameer from "./pictures/sameer.jpeg";
 const teamMembers = [
-  
+
   {
     id: 1,
     img: hamayopic,
     name: "Hamayun Gulzar Bhatti",
     title: "Manager Sales",
   },
-   {
-    id: 6,
+  {
+    id: 2,
     img: qurbanali,
     name: "Qurban Ali",
-    title: "Parts Manager",
+    title: " Manager Parts",
   },
-  
+  {
+    id: 3,
+    img: samad,
+    name: "Abdul Sammad Nadeem",
+    title: "Manager Used Car ",
+  },
   {
     id: 4,
     img: ikram,
     name: "Amir Sohail",
-    title: "Aftersales Manager ",
+    title: " Manager Aftersales",
+  },
+
+
+  {
+    id: 5,
+    img: aneesbibi,
+    name: "Anees Bibi",
+    title: "Manager Suzuki Finance ",
+  },
+  {
+    id: 6,
+    img: sameer,
+    name: "Sameer Aslam",
+    title: "Accounts Manager ",
   },
   {
     id: 7,
-    img: samad,
-    name: "Adbdul Samad Nadeem",
-    title: "Used Car Manager",
-  },
- 
-  {
-    id: 3,
-    img: aneesbibi,
-    name: "Anees Bibi",
-    title: "Suzuki Finance Manager",
-  },
-   {
-    id: 8,
-    img: sameer,
-    name: "Sameer Aslam",
-    title: "Accounts Manager",
-  },
-  {
-    id: 5,
     img: qulbabas,
     name: "Qalb e Abbas",
-    title: "IT Manager",
+    title: "  IT Manager",
   },
   {
     id: 8,
     img: body,
     name: "Ikram Ali",
-    title: "Body Shop Manager",
+    title: "Manager BodyShop ",
   },
-   {
-    id: 2,
+  {
+    id: 9,
     img: meesam,
     name: "Meesam khan",
     title: "HR Manager",
@@ -70,35 +70,37 @@ const teamMembers = [
 
 export default function Team() {
   return (
-    <>
-      <section className="py-1 py-xl-2 bg-light overflow-hidden">
+      <section className=" bg-light overflow-hidden">
         <div className="container">
-           <div className="text-center mb-5">
-          <h2 className="fw-bold">Meet Our Experts</h2>
-         
-        </div>
+          <div className="text-center mb-5">
+            <h2 className="fw-bold">Meet Our Experts</h2>
 
-          <div className="row g-3 g-xl-5">
+          </div>
+
+          <div className="row g-2 g-xl-5 mb-6">
             {teamMembers.map((member) => (
               <div key={member.id} className="col-md-6 col-lg-4">
-                <div className="card">
-                  <div className="equal-1-1 mb-2">
+                <div className="team-card">
+                  <div className="team-image">
                     <Image
-                      className="background"
                       src={member.img}
+                      alt={member.name}
                       layout="responsive"
-                      alt={`${member.name} image`}
+                      style={{  }}
                     />
                   </div>
-                  <h4 className="fs-5 mb-0">{member.name}</h4>
-                  <span className="text-secondary">{member.title}</span>
+
+                  <div className="team-content">
+                    <h4>{member.name}</h4>
+                    <p>{member.title}</p>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
-      {/* <Missions /> */}
-    </>
+      
+   
   );
 }

@@ -9,7 +9,7 @@ import alto from "../public/Alto/Alto White.png";
 import cultus1 from "../public/Cultus/Cultus-White.jpg";
 import swift1 from "../public/Swift/03-(1).png";
 import Fronk from "../public/cars/fronx/Fronx.jpeg";
-import everycar from "../public/cars/Untitled-image-(14) (1).png";
+import everycar from "../public/cars/024A5593.png";
 
 import aos from "aos";
 import "aos/dist/aos.css";

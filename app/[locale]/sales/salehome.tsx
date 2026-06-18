@@ -9,7 +9,7 @@ import alto from "../public/Alto/Alto White.png";
 import cultus1 from "../public/Cultus/Cultus-White.jpg";
 import swift1 from "../public/Swift/03-(1).png";
 import Fronk from "../public/cars/fronx/Fronx.jpeg";
-import everycar from "../public/cars/Untitled-image-(14) (1).png";
+import everycar from "../public/cars/024A5593.png";
 
 import aos from "aos";
 import "aos/dist/aos.css";
@@ -70,100 +70,100 @@ const SalesHome = () => {
 
   return (
     <>
-    <section className="cars-section py-5  text-dark">
+      <section className="cars-section py-5  text-dark">
 
-  {/* HERO */}
-<div className=" py-10">
-  <div className="container">
+        {/* HERO */}
+        <div className=" py-10">
+          <div className="container">
 
-    <div className="row align-items-center">
+            <div className="row align-items-center">
 
-      {/* LEFT TEXT */}
-      <div className="col-12 col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
-        <h1 className="hero-title">Find Your Perfect Ride</h1>
-        <p className="hero-sub">
-          Premium Suzuki cars with best deals & easy booking
-        </p>
-      </div>
+              {/* LEFT TEXT */}
+              <div className="col-12 col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
+                <h1 className="hero-title">Find Your Perfect Ride</h1>
+                <p className="hero-sub">
+                  Premium Suzuki cars with best deals & easy booking
+                </p>
+              </div>
 
-      {/* RIGHT FORM */}
-      <div className="col-12 col-lg-6 d-flex justify-content-center justify-content-lg-end">
+              {/* RIGHT FORM */}
+              <div className="col-12 col-lg-6 d-flex justify-content-center justify-content-lg-end">
 
 
-          <div className="form-content flex align-items-center justify-content-center">
-          <CarBookingForm/>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  </div>
-
-      {/* GRID */}
-      <div className="container py-5">
-        <div className="row g-4">
-
-          {cars.map((car) => (
-            <div key={car.id} className="col-md-4" data-aos="fade-up">
-
-              <div className="car-card">
-
-                {/* IMAGE */}
-              <Link href={car.link}>
-  <div className="car-img">
-    <Image
-      src={car.image}
-      alt={car.title}
-      fill
-      className="car-image"
-    />
-  </div>
-</Link>
-
-                {/* BODY */}
-                <div className="car-info">
-
-                  <h4>{car.title}</h4>
-
-                  <p className="price bold-text">{car.price}</p>
-
-                  {/* FILTER / NON-FILTER */}
-                  <div className="price-tags">
-                    <span className="filer">
-                      Filer: {car.filer}
-                    </span>
-                    <span className="non-filer">
-                      Non-Filer: {car.nonFiler}
-                    </span>
-                  </div>
-                  <div className="divider">
-                    <hr />
-                  </div>
-                  {/* BUTTONS */}
-                  <div className="actions">
-                    <Link href={car.link} className="view-btn">
-                      View Details
-                    </Link>
- 
-
-                   <CarBookingForm/>
-                  </div>
-
+                <div className="form-content flex align-items-center justify-content-center">
+                  <CarBookingForm />
                 </div>
 
               </div>
 
             </div>
-          ))}
+
+          </div>
 
         </div>
-      </div>
 
-      {/* STYLES */}
-      <style jsx>{`
+        {/* GRID */}
+        <div className="container py-5">
+          <div className="row g-4">
+
+            {cars.map((car) => (
+              <div key={car.id} className="col-md-4" data-aos="fade-up">
+
+                <div className="car-card">
+
+                  {/* IMAGE */}
+                  <Link href={car.link}>
+                    <div className="car-img">
+                      <Image
+                        src={car.image}
+                        alt={car.title}
+                        fill
+                        className="car-image"
+                      />
+                    </div>
+                  </Link>
+
+                  {/* BODY */}
+                  <div className="car-info">
+
+                    <h4>{car.title}</h4>
+
+                    <p className="price bold-text">{car.price}</p>
+
+                    {/* FILTER / NON-FILTER */}
+                    <div className="price-tags">
+                      <span className="filer">
+                        Filer: {car.filer}
+                      </span>
+                      <span className="non-filer">
+                        Non-Filer: {car.nonFiler}
+                      </span>
+                    </div>
+                    <div className="divider">
+                      <hr />
+                    </div>
+                    {/* BUTTONS */}
+                    <div className="actions">
+                      <Link href={car.link} className="view-btn">
+                        View Details
+                      </Link>
+
+
+                      <CarBookingForm />
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+            ))}
+
+          </div>
+        </div>
+
+        {/* STYLES */}
+        <style jsx>{`
         .cars-section {
           background: #f6f7fb;
         }
@@ -275,7 +275,7 @@ const SalesHome = () => {
 }
       `}</style>
 
-    </section>
+      </section>
 
     </>
 

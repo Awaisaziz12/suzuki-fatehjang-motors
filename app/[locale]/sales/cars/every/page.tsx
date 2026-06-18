@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "@/navigation";
 import Constants from "@/data/Constants";
 import { CarBookingForm } from "@/app/[locale]/common/booking-form-new-cars";
-import CarosilEvery from "./CarosilEvery";
 
 const everyConfig = {
   title: "Every For Everyone",

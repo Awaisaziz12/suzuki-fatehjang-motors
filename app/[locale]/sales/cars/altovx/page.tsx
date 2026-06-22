@@ -108,8 +108,8 @@ export default function Alto() {
                     <th>Variant</th>
                     {/* <th>VX</th> */}
                     <th>VXR</th>
-                    <th>VXL</th>
-                    <th>AGS</th>
+                    <th>VXR AGS</th>
+                    <th>AXL AGS</th>
                   </tr>
                 </thead>
                 <tbody>

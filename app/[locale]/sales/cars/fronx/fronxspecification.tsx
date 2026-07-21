@@ -14,8 +14,8 @@ const fronxConfig = {
   prices: {
     mt: "Rs 5,999,999/-",
     glAt: "Rs 6,099,999/-",
-    glxMono: "Rs 6,299,999/-",
-    glxTwoTone: "Rs 6,374,999/-",
+    glxMono: "Rs 6,699,999/-",
+    glxTwoTone: "Rs 6,774,999/-",
   },
 
   specifications: [

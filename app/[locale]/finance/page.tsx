@@ -5,13 +5,27 @@ import { FinanceBookingForm } from "../common/bookingfinance";
 export default function Finance() {
   return (
     <section className="finance-page py-5 bg-light">
-      <div className="container py-7">
+      <div className="container ">
 
         {/* Heading */}
-        <div className="text-center mb-5">
+        <div className="text-center mb-5"  style={{
+    background: "linear-gradient(135deg, #ffffff, #f3f6fa)",
+    borderRadius: "24px",
+    boxShadow:
+      "0 20px 45px rgba(0,0,0,0.12), inset 0 2px 6px rgba(255,255,255,0.8)",
+    border: "1px solid rgba(255,255,255,0.7)",
+    transform: "perspective(1000px) rotateX(2deg)",
+    backdropFilter: "blur(10px)",
+    maxWidth: "1300px",
+    margin: "0 auto",
+    padding :"1.5rem",
+  }}>
           
 
-          <h1 className="fw-bold display-3">
+          <h1 className="fw-bold display-3"  style={{
+      color: "#222",
+      textShadow: "2px 2px 8px rgba(0,0,0,0.15)",
+    }}>
              Lease & Finance
           </h1>
 

@@ -18,7 +18,7 @@ const aftersaleConfig = {
       title: "Extended Warranty",
       description:
         "Protect your vehicle with flexible extended warranty plans designed for long-term peace of mind.",
-      link: "/en/aftersale/extend_warrenty",
+      link: "/",
       linkText: "Learn More",
     },
     {

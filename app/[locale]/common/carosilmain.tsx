@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import image2 from "../sales/cars/fronx/fronx.png";
+import image2 from "../sales/cars/fronx/gallery-04.jpg";
 
 import Image from "next/image";
 import { Carousel } from "react-responsive-carousel";

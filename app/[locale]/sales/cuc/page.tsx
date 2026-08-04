@@ -5,11 +5,32 @@ import alto1 from "./alto.png";
 import alto2 from "./every.png";
 import alto3 from "./alto3.png";
 import alto4 from "./alto4.png";
+import alto5 from "./altoup.jpg";
+import bolan1 from "./bolanup.jpg";
+import Every from "./Everyup.jpg";
 
 import { Link } from "@/navigation";
 import Constants from "@/data/Constants";
 
 const carData = [
+   {
+    model: "Bolan VX ",
+    price: 1800000,
+    mileage: "35116km",
+    year: 2019,
+    brand: "bolan",
+    img: bolan1,
+    isSold: false,
+  },
+   {
+    model: "Every VX ",
+    price: 2975000,
+    mileage: "11270km",
+    year: 2025,
+    brand: "Every",
+    img: Every,
+    isSold: true,
+  },
    {
     model: "Alto VXR ",
     price: 2975000,

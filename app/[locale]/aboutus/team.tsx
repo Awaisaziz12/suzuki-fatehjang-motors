@@ -1,5 +1,5 @@
 import Image from "next/image";
-import hamayopic from "../public/profiles/hamayo.jpeg";
+import hamayopic from "./pictures/hamayo.jpeg";
 import meesam from "./pictures/meesam.png";
 import aneesbibi from "./pictures/anees bibi.jpeg";
 import ikram from "./pictures/ikram.jpeg";
@@ -20,8 +20,8 @@ const teamMembers = [
   {
     id: 10,
     img: farooq,
-    name: "Umer Farooq",
-    title: "Head Of Sales",
+    name: "Farooq Omer khan",
+    title: "Head of Sales & Marketing",
   },
   {
     id: 2,

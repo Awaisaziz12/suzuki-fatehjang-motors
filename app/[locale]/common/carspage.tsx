@@ -35,11 +35,11 @@ const cars = [
   },
   {
     id: "cultus",
-    title: "Cultus",
+    title: "Cultus VXL",
     image: cultus1,
-    price: "Rs 4,089,490/-",
-    filer: "40,895/-",
-    nonFiler: "122,685/-",
+    price: "Rs 4,359,160/-",
+    filer: "43,592/-",
+    nonFiler: "130,775/-",
     link: "/sales/cars/cultusvxr",
   },
   {

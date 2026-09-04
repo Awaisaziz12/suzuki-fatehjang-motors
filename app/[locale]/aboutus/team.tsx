@@ -8,6 +8,7 @@ import qurbanali from "./pictures/qurbanali.jpeg";
 import samad from "./pictures/samad.jpeg";
 import body from "./pictures/bodyshop.jpeg";
 import sameer from "./pictures/sameer.jpeg";
+import farooq from "./pictures/farooq.png";
 const teamMembers = [
 
   {
@@ -15,6 +16,12 @@ const teamMembers = [
     img: hamayopic,
     name: "Hamayun Gulzar Bhatti",
     title: "Manager Sales",
+  },
+  {
+    id: 10,
+    img: farooq,
+    name: "Umer Farooq",
+    title: "Head Of Sales",
   },
   {
     id: 2,

@@ -112,9 +112,7 @@ export default function Cultus() {
                 <thead className="table-dark">
                   <tr>
                     <th>Variant</th>
-                    <th>VXR</th>
                     <th>VXL</th>
-                    <th>AGS</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -123,24 +121,18 @@ export default function Cultus() {
                     <td>
                       <strong>Price</strong>
                     </td>
-                    <td>{cultusConfig.prices.vxr}</td>
                     <td>{cultusConfig.prices.vxl}</td>
-                    <td>{cultusConfig.prices.ags}</td>
                   </tr>
 
                   {/* Specifications Rows */}
                   {cultusConfig.specifications.map((spec, index) => (
                     <tr key={index}>
                       <td>{spec.feature}</td>
-                      <td>
-                        <TickCrossIcon value={spec.vxr} />
-                      </td>
+                     
                       <td>
                         <TickCrossIcon value={spec.vxl} />
                       </td>
-                      <td>
-                        <TickCrossIcon value={spec.ags} />
-                      </td>
+                     
                     </tr>
                   ))}
                 </tbody>

@@ -45,7 +45,7 @@ const teamMembers = [
   {
     id: 14,
     img: fatir,
-    name: "Amir Sohail",
+    name: "Fatir Nazar",
     title: "Used Car Manager",
   },
 

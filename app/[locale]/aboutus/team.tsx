@@ -2,13 +2,13 @@ import Image from "next/image";
 import hamayopic from "./pictures/hamayo.jpeg";
 import meesam from "./pictures/meesam.png";
 import aneesbibi from "./pictures/anees bibi.jpeg";
-import ikram from "./pictures/ikram.jpeg";
 import qulbabas from "./pictures/Qalbeabas.png";
 import qurbanali from "./pictures/quran.png";
-import samad from "./pictures/samad.jpeg";
-import body from "./pictures/bodyshop.jpeg";
+import samad from "./pictures/samad new.jpeg";
+import Mushtaq from "./pictures/Mushtaq.jpeg";
 import sameer from "./pictures/sameer.jpeg";
 import farooq from "./pictures/farooq.png";
+import fatir from "./pictures/fatir new.jpeg";
 const teamMembers = [
 
   {
@@ -33,13 +33,20 @@ const teamMembers = [
     id: 3,
     img: samad,
     name: "Abdul Sammad Nadeem",
-    title: "Manager Used Car ",
+    title: "Service Manager",
+  },
+  
+   {
+    id: 8,
+    img: Mushtaq,
+    name: "Muhammad Mushtaq",
+    title: "Manager BodyShop ",
   },
   {
-    id: 4,
-    img: ikram,
+    id: 14,
+    img: fatir,
     name: "Amir Sohail",
-    title: " Manager Aftersales",
+    title: "Used Car Manager",
   },
 
 
@@ -61,12 +68,7 @@ const teamMembers = [
     name: "Qalb e Abbas",
     title: "  IT Manager",
   },
-  {
-    id: 8,
-    img: body,
-    name: "Ikram Ali",
-    title: "Manager BodyShop ",
-  },
+ 
   {
     id: 9,
     img: meesam,

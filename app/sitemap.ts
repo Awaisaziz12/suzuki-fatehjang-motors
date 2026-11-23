@@ -42,6 +42,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 }
 
 function domainPath(path: string): string {
-  return "https://www.fatejungmotors.com.pk/" + path;
+  return "https://www.suzukifatehjang.com/" + path;
   //return process.env.DOMAIN + path;
 }
